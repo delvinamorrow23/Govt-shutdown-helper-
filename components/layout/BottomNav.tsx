@@ -55,6 +55,19 @@ const tabs = [
     ),
   },
   {
+    id: 'games',
+    label: 'Games',
+    path: '/child/mini-games',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="6" width="20" height="12" rx="3" />
+        <circle cx="9" cy="12" r="2" />
+        <path d="M16 10v4" />
+        <path d="M14 12h4" />
+      </svg>
+    ),
+  },
+  {
     id: 'guides',
     label: 'Guides',
     path: '/child/guides',

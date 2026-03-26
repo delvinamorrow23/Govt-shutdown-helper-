@@ -26,9 +26,11 @@ export default function ChildLayout({ children }: { children: React.ReactNode })
       ? 'garden'
       : pathname.includes('/badges')
         ? 'badges'
-        : pathname.includes('/guides')
-          ? 'guides'
-          : 'home';
+        : pathname.includes('/mini-games')
+          ? 'games'
+          : pathname.includes('/guides')
+            ? 'guides'
+            : 'home';
 
   if (!ready) return null;
 

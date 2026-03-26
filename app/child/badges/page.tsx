@@ -3,28 +3,23 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { getActiveProfile } from '@/lib/storage';
+import { ALL_BADGES } from '@/lib/badges';
 import type { ChildProfile } from '@/lib/types';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 
-// Sample badges (will be moved to data/badges.json later)
-const ALL_BADGES = [
-  { id: 'first-mission', name: 'First Step', icon: '🌱', category: 'special', description: 'Complete your first mission' },
-  { id: 'streak-7', name: '7-Day Spark', icon: '🔥', category: 'streak', description: 'Complete missions 7 days in a row' },
-  { id: 'streak-30', name: '30-Day Flame', icon: '🔥', category: 'streak', description: 'Complete missions 30 days in a row' },
-  { id: 'heart-5', name: 'Shining Star', icon: '⭐', category: 'heart-level', description: 'Reach Heart Level 5' },
-  { id: 'kg-complete', name: 'Garden Guardian', icon: '🌻', category: 'world', description: 'Complete all Kindness Garden missions' },
-  { id: 'ff-complete', name: 'Forest Friend', icon: '🌳', category: 'world', description: 'Complete all Friendship Forest missions' },
-  { id: 'empathy-10', name: 'Empathy Explorer', icon: '💝', category: 'casel', description: '10 social awareness missions' },
-  { id: 'courage-10', name: 'Courage Builder', icon: '💪', category: 'casel', description: '10 self-management missions' },
-  { id: 'bear-bond', name: "Bear's Best Friend", icon: '🐻', category: 'guide-bond', description: 'Max bond with Brave Bear' },
-  { id: 'squirrel-bond', name: "Squirrel's Pal", icon: '🐿️', category: 'guide-bond', description: 'Max bond with Sharing Squirrel' },
-  { id: 'kind-eyes', name: 'Kind Eyes Master', icon: '👁️', category: 'special', description: 'Complete 10 Kind Eyes missions' },
-  { id: 'kind-heart', name: 'Kind Heart Master', icon: '💖', category: 'special', description: 'Complete 10 Kind Heart missions' },
+const CATEGORIES = [
+  { id: 'special', name: 'Special', emoji: '✨' },
+  { id: 'streak', name: 'Streaks', emoji: '🔥' },
+  { id: 'heart-level', name: 'Heart Levels', emoji: '💛' },
+  { id: 'world', name: 'Worlds', emoji: '🗺️' },
+  { id: 'casel', name: 'SEL Growth', emoji: '🌱' },
+  { id: 'guide-bond', name: 'Guide Bonds', emoji: '🤝' },
 ];
 
 export default function BadgesPage() {
   const [profile, setProfile] = useState<ChildProfile | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   useEffect(() => {
     setProfile(getActiveProfile());
@@ -33,21 +28,72 @@ export default function BadgesPage() {
   if (!profile) return null;
 
   const earned = new Set(profile.badges);
+  const earnedCount = earned.size;
+  const totalCount = ALL_BADGES.length;
+
+  const displayBadges = selectedCategory
+    ? ALL_BADGES.filter(b => b.category === selectedCategory)
+    : ALL_BADGES;
 
   return (
     <div className="px-5 pt-6">
-      <h1 className="text-2xl font-extrabold text-gleea-warm-gray mb-2">Your Badges</h1>
-      <p className="text-gleea-warm-gray/60 mb-6">
-        {earned.size} of {ALL_BADGES.length} earned
+      <h1 className="text-2xl font-extrabold text-gleea-warm-gray mb-1">Your Badges</h1>
+      <p className="text-gleea-warm-gray/60 mb-4">
+        {earnedCount} of {totalCount} earned
       </p>
 
+      {/* Progress bar */}
+      <div className="mb-6">
+        <div className="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+          <motion.div
+            className="h-full bg-gradient-to-r from-gleea-pink to-gleea-gold rounded-full"
+            initial={{ width: 0 }}
+            animate={{ width: `${(earnedCount / totalCount) * 100}%` }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          />
+        </div>
+      </div>
+
+      {/* Category filter */}
+      <div className="flex gap-2 overflow-x-auto pb-3 mb-4 -mx-1 px-1">
+        <button
+          onClick={() => setSelectedCategory(null)}
+          className={`flex-shrink-0 rounded-full px-3 py-1.5 text-xs font-bold transition-all ${
+            !selectedCategory
+              ? 'bg-gleea-pink text-white'
+              : 'bg-white text-gleea-warm-gray shadow-soft'
+          }`}
+        >
+          All
+        </button>
+        {CATEGORIES.map(cat => {
+          const catEarned = ALL_BADGES.filter(b => b.category === cat.id && earned.has(b.id)).length;
+          const catTotal = ALL_BADGES.filter(b => b.category === cat.id).length;
+          return (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`flex-shrink-0 rounded-full px-3 py-1.5 text-xs font-bold transition-all ${
+                selectedCategory === cat.id
+                  ? 'bg-gleea-pink text-white'
+                  : 'bg-white text-gleea-warm-gray shadow-soft'
+              }`}
+            >
+              {cat.emoji} {cat.name} ({catEarned}/{catTotal})
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Badge grid */}
       <div className="grid grid-cols-3 gap-3">
-        {ALL_BADGES.map((badge, i) => (
+        {displayBadges.map((badge, i) => (
           <motion.div
             key={badge.id}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: i * 0.05 }}
+            transition={{ delay: i * 0.03 }}
+            className="flex flex-col items-center"
           >
             <Badge
               name={badge.name}
@@ -55,15 +101,19 @@ export default function BadgesPage() {
               earned={earned.has(badge.id)}
               size="lg"
             />
+            <p className="text-[9px] text-gleea-warm-gray/40 text-center mt-1 leading-tight max-w-[80px]">
+              {badge.description}
+            </p>
           </motion.div>
         ))}
       </div>
 
-      {earned.size === 0 && (
+      {earnedCount === 0 && (
         <Card className="mt-6 text-center">
           <div className="text-3xl mb-2">✨</div>
-          <p className="text-gleea-warm-gray/60">
-            Complete missions to earn your first badge!
+          <p className="font-bold text-gleea-warm-gray">Your badge wall awaits!</p>
+          <p className="text-gleea-warm-gray/60 text-sm mt-1">
+            Complete missions to earn your first badge.
           </p>
         </Card>
       )}
