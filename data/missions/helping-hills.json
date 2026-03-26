@@ -1,0 +1,187 @@
+[
+  {
+    "id": "hh-001",
+    "worldId": "helping-hills",
+    "title": "The Pickup Path",
+    "guideId": "sweet-skunk",
+    "caselCompetency": "responsible-decision-making",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "hands",
+    "xpReward": 20,
+    "order": 1,
+    "story": {
+      "title": "Sweet Skunk Tidies the Trail",
+      "pages": [
+        {
+          "text": "Sweet Skunk was walking along the paper-craft trail of Helping Hills when she noticed crumpled bits of litter hiding behind the bushes. The flowers looked sad.",
+          "narratorLine": "When we notice something that isn't right, that's the first step to making it better."
+        },
+        {
+          "text": "Skunk found a paper bag and began picking up the litter, piece by piece. A ladybug clapped her tiny wings. 'Thank you!' chirped a bluebird from a branch above.",
+          "narratorLine": "Even the smallest hands can make a big difference when they get to work."
+        },
+        {
+          "text": "When the trail was clean, the flowers seemed to stand a little taller and the sunshine felt a little brighter. Skunk smiled — one small act had changed the whole hillside.",
+          "narratorLine": "Taking care of our shared spaces is a gift we give to everyone who comes after us."
+        }
+      ]
+    },
+    "doAction": {
+      "instruction": "With a grown-up nearby, pick up five pieces of litter in your neighborhood, park, or yard and throw them away properly.",
+      "steps": [
+        "Ask a grown-up to go on a short walk with you and bring a bag.",
+        "Pick up five pieces of litter you see on the ground and put them in the bag to throw away."
+      ],
+      "seedlingSimplified": "Pick up one piece of trash outside and put it in a bin."
+    },
+    "shinePrompt": "How did the area look after you cleaned it up?"
+  },
+  {
+    "id": "hh-002",
+    "worldId": "helping-hills",
+    "title": "The Doorstep Surprise",
+    "guideId": "sharing-squirrel",
+    "caselCompetency": "responsible-decision-making",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "heart",
+    "xpReward": 20,
+    "order": 2,
+    "story": {
+      "title": "Sharing Squirrel's Secret Gift",
+      "pages": [
+        {
+          "text": "Sharing Squirrel noticed that old Mrs. Rabbit next door had been very quiet lately. Her garden looked droopy, and her curtains stayed closed.",
+          "narratorLine": "A kind heart pays attention — even to the people just outside our door."
+        },
+        {
+          "text": "Squirrel gathered paper-craft wildflowers and tied them with a ribbon. She tiptoed to Mrs. Rabbit's doorstep and left the bouquet with a note: 'You are not forgotten.'",
+          "narratorLine": "You don't need a reason to brighten someone's day — kindness is reason enough."
+        },
+        {
+          "text": "From behind a bush, Squirrel watched Mrs. Rabbit open the door. Her whiskers trembled with joy, and she held the flowers close. The curtains opened wide that afternoon.",
+          "narratorLine": "A small surprise can open a window in someone's heart and let the sunshine back in."
+        }
+      ]
+    },
+    "doAction": {
+      "instruction": "Make a small surprise for a neighbor or someone in your community — a drawing, a flower, or a friendly note — and deliver it to their door.",
+      "steps": [
+        "Create a small gift: draw a picture, pick a flower, or write a kind note.",
+        "With a grown-up's help, leave it at a neighbor's door or hand it to someone in your community."
+      ],
+      "seedlingSimplified": "Draw a happy picture and give it to a neighbor."
+    },
+    "shinePrompt": "How did it feel to do something kind for someone outside your family?"
+  },
+  {
+    "id": "hh-003",
+    "worldId": "helping-hills",
+    "title": "The Toy Mountain",
+    "guideId": "brave-bear",
+    "caselCompetency": "responsible-decision-making",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "hands",
+    "xpReward": 25,
+    "order": 3,
+    "story": {
+      "title": "Brave Bear Lightens the Load",
+      "pages": [
+        {
+          "text": "Brave Bear looked at his toy shelf. It was so full that toys tumbled out every time he opened the door. Meanwhile, the little cubs down the hill had very few toys to play with.",
+          "narratorLine": "When we have more than we need, we have a chance to be a hero to someone else."
+        },
+        {
+          "text": "Bear chose three toys he had outgrown — a puzzle, a ball, and a stuffed fish. He washed them, wrapped them in paper-craft bows, and placed them in a basket.",
+          "narratorLine": "Giving away something we once loved takes courage, but it makes room for even more love."
+        },
+        {
+          "text": "He carried the basket down the hill. When the little cubs unwrapped the toys, their laughter echoed across Helping Hills like a song. Bear's heart felt lighter than ever.",
+          "narratorLine": "The things we give away don't disappear — they turn into someone else's joy."
+        }
+      ]
+    },
+    "doAction": {
+      "instruction": "With a grown-up's help, choose two or three gently used toys, books, or clothes you've outgrown and set them aside to donate.",
+      "steps": [
+        "Look through your toys, books, or clothes and find two or three things you no longer use.",
+        "Put them in a bag or box and ask a grown-up to help you bring them to a donation spot."
+      ],
+      "seedlingSimplified": "Pick one toy you don't play with anymore and put it in a give-away bag."
+    },
+    "shinePrompt": "How did it feel to let go of something so another child could enjoy it?"
+  },
+  {
+    "id": "hh-004",
+    "worldId": "helping-hills",
+    "title": "The Thank-You Patrol",
+    "guideId": "sweet-skunk",
+    "caselCompetency": "responsible-decision-making",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "eyes",
+    "xpReward": 15,
+    "order": 4,
+    "story": {
+      "title": "Sweet Skunk Sees the Helpers",
+      "pages": [
+        {
+          "text": "Sweet Skunk was walking through town when she noticed all the helpers she usually walked right past — the mail carrier, the crossing guard, the librarian shelving books.",
+          "narratorLine": "Kind eyes help us see the people who quietly make our world better every day."
+        },
+        {
+          "text": "Skunk stopped at each one and said, 'Thank you for what you do.' The mail carrier's hat seemed to sit a little taller. The crossing guard's whistle blew a little brighter.",
+          "narratorLine": "Two small words — 'thank you' — can make someone feel truly seen."
+        },
+        {
+          "text": "By the end of her walk, Skunk had thanked five helpers. And the whole town of Helping Hills seemed to glow, as if kindness had turned on every streetlamp at once.",
+          "narratorLine": "When we thank the helpers around us, we remind them that their work matters."
+        }
+      ]
+    },
+    "doAction": {
+      "instruction": "Find a community helper — a teacher, librarian, bus driver, mail carrier, or store clerk — and say 'Thank you for what you do!'",
+      "steps": [
+        "Think about the helpers you see during your day.",
+        "The next time you see one, look them in the eye, smile, and say 'Thank you for what you do!'"
+      ],
+      "seedlingSimplified": "Say 'thank you' to a helper you see today."
+    },
+    "shinePrompt": "Who did you thank, and how did they respond?"
+  },
+  {
+    "id": "hh-005",
+    "worldId": "helping-hills",
+    "title": "The Helping Hands Chain",
+    "guideId": "sharing-squirrel",
+    "caselCompetency": "responsible-decision-making",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "hands",
+    "xpReward": 25,
+    "order": 5,
+    "story": {
+      "title": "Sharing Squirrel Starts a Chain",
+      "pages": [
+        {
+          "text": "Sharing Squirrel helped Brave Bear carry his heavy acorn basket up the hill. 'Thank you!' Bear said. 'I'll help someone else today too.'",
+          "narratorLine": "One act of helping can start a chain that stretches farther than you can see."
+        },
+        {
+          "text": "Bear held the door for Gentle Deer. Deer helped Sweet Skunk water the garden. Skunk shared her umbrella with Joyful Otter. The chain of helping hands grew and grew.",
+          "narratorLine": "Kindness is like a paper chain — each link makes it longer and stronger."
+        },
+        {
+          "text": "By sunset, the chain of helping had wound all around Helping Hills. Squirrel laughed. 'I only did one little thing!' But that one thing had touched everyone.",
+          "narratorLine": "You never know how far your kindness will travel — it only takes one link to start."
+        }
+      ]
+    },
+    "doAction": {
+      "instruction": "Do one helpful thing for someone and then ask them to help someone else today too, starting a kindness chain.",
+      "steps": [
+        "Choose one helpful action: hold a door, carry something, or help clean up.",
+        "After you help, smile and say, 'Can you help someone else today too?' to keep the chain going."
+      ],
+      "seedlingSimplified": "Help someone with one thing today."
+    },
+    "shinePrompt": "Did the person you helped pass the kindness along? How did that make you feel?"
+  }
+]

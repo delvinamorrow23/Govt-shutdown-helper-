@@ -1,0 +1,127 @@
+[
+  {
+    "id": "kg-001",
+    "worldId": "kindness-garden",
+    "title": "The Thank-You Seed",
+    "guideId": "joyful-otter",
+    "caselCompetency": "self-awareness",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "heart",
+    "xpReward": 15,
+    "order": 1,
+    "story": {
+      "title": "Joyful Otter Plants a Seed",
+      "pages": [
+        { "text": "Joyful Otter found a tiny golden seed by the river. 'I wonder what it grows into?' she said.", "narratorLine": "Every kind word is like planting a seed." },
+        { "text": "She planted it carefully and whispered, 'Thank you, little seed, for choosing me.' The next morning, a small green sprout appeared with a warm glow.", "narratorLine": "When we say thank you, kindness starts to grow." },
+        { "text": "'Wow!' said Otter. 'Gratitude makes things grow!' She decided to say thank you to someone every single day.", "narratorLine": "Your turn! Who can you thank today?" }
+      ]
+    },
+    "doAction": {
+      "instruction": "Say 'thank you' to someone who helps you today.",
+      "steps": ["Think of someone who helped you recently.", "Tell them 'Thank you!' and say why you're grateful."],
+      "seedlingSimplified": "Say 'thank you' to someone you love."
+    },
+    "shinePrompt": "How did it feel to say thank you?"
+  },
+  {
+    "id": "kg-002",
+    "worldId": "kindness-garden",
+    "title": "Brave Bear's First Step",
+    "guideId": "brave-bear",
+    "caselCompetency": "self-management",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "hands",
+    "xpReward": 15,
+    "order": 2,
+    "story": {
+      "title": "Brave Bear Tries Something New",
+      "pages": [
+        { "text": "Brave Bear stood at the edge of the Kindness Garden. The path ahead looked different from anything he'd seen before.", "narratorLine": "Being brave doesn't mean you're not scared." },
+        { "text": "'What if I make a mistake?' Bear whispered. His golden heart glowed softly. 'Mistakes help me grow,' he remembered.", "narratorLine": "Your heart knows — trying is what matters most." },
+        { "text": "Bear took one step, then another. With each step, tiny flowers bloomed behind him. 'My courage is making the garden grow!'", "narratorLine": "Every brave step you take makes the world more beautiful." }
+      ]
+    },
+    "doAction": {
+      "instruction": "Try something new or a little bit scary today.",
+      "steps": ["Think of something you've been wanting to try but felt nervous about.", "Take a deep breath and try it!", "Notice how you feel after."],
+      "seedlingSimplified": "Try one new thing today."
+    },
+    "shinePrompt": "How did it feel to be brave?"
+  },
+  {
+    "id": "kg-003",
+    "worldId": "kindness-garden",
+    "title": "The Sharing Acorn",
+    "guideId": "sharing-squirrel",
+    "caselCompetency": "social-awareness",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "hands",
+    "xpReward": 15,
+    "order": 3,
+    "story": {
+      "title": "Sharing Squirrel's Special Acorn",
+      "pages": [
+        { "text": "Sharing Squirrel had collected the most beautiful acorn in the whole garden. It glowed golden in her tiny paws.", "narratorLine": "Sometimes the most special things are even better when shared." },
+        { "text": "She saw Gentle Deer sitting alone, looking sad. 'Would you like to hold my special acorn?' Squirrel asked.", "narratorLine": "Noticing when someone needs kindness — that's having Kind Eyes." },
+        { "text": "Deer's eyes lit up. 'Really? For me?' When they held the acorn together, it glowed twice as bright. Sharing had made it even more special.", "narratorLine": "When we share, kindness multiplies!" }
+      ]
+    },
+    "doAction": {
+      "instruction": "Share something you enjoy with someone else.",
+      "steps": ["Pick a toy, snack, or activity you like.", "Invite someone to enjoy it with you.", "Notice how sharing feels."],
+      "seedlingSimplified": "Share a toy with someone."
+    },
+    "shinePrompt": "How did sharing make you feel?"
+  },
+  {
+    "id": "kg-004",
+    "worldId": "kindness-garden",
+    "title": "The Feelings Rainstorm",
+    "guideId": "joyful-otter",
+    "caselCompetency": "self-awareness",
+    "ageBands": ["sprout", "bloomer"],
+    "kindPrinciple": "heart",
+    "xpReward": 20,
+    "order": 4,
+    "story": {
+      "title": "Otter's Rainy Day Discovery",
+      "pages": [
+        { "text": "Dark clouds gathered over the Kindness Garden. Joyful Otter felt something heavy in her chest. 'What is this feeling?' she wondered.", "narratorLine": "All feelings are okay — even the tricky ones." },
+        { "text": "'I think I feel... frustrated,' Otter said slowly. Just naming the feeling made it a little smaller. The clouds lightened a tiny bit.", "narratorLine": "When we name our feelings, they become easier to hold." },
+        { "text": "Otter took three deep breaths. With each breath, a rainbow appeared. 'My feelings are like weather — they come and go, and every one is important.'", "narratorLine": "You're learning something amazing — feelings are messengers, not monsters." }
+      ]
+    },
+    "doAction": {
+      "instruction": "Name three feelings you had today.",
+      "steps": ["Think about your morning — what did you feel?", "Think about your afternoon — what feeling visited?", "Right now — what feeling is here? Say it out loud."],
+      "seedlingSimplified": "Tell a grown-up how you feel right now."
+    },
+    "shinePrompt": "What feelings did you discover?"
+  },
+  {
+    "id": "kg-005",
+    "worldId": "kindness-garden",
+    "title": "The Kindness Watering Can",
+    "guideId": "gentle-deer",
+    "caselCompetency": "social-awareness",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "eyes",
+    "xpReward": 15,
+    "order": 5,
+    "story": {
+      "title": "Gentle Deer Sees a Friend in Need",
+      "pages": [
+        { "text": "Gentle Deer noticed a small flower in the garden drooping low. No one else seemed to see it. But Deer had Kind Eyes.", "narratorLine": "Kind Eyes means noticing when someone needs help." },
+        { "text": "'You look thirsty, little flower,' Deer said softly. She found a watering can and gave the flower a gentle drink.", "narratorLine": "You don't have to do something big — small kindnesses matter most." },
+        { "text": "The flower stood tall again and bloomed bright pink. 'Thank you for seeing me,' it whispered. Deer smiled. Paying attention was the kindest thing of all.", "narratorLine": "Today, use your Kind Eyes. Who around you might need a little kindness?" }
+      ]
+    },
+    "doAction": {
+      "instruction": "Use your Kind Eyes — notice someone who could use a little help or a kind word.",
+      "steps": ["Look around you with Kind Eyes.", "Find someone who might need help, a smile, or a kind word.", "Do one small kind thing for them."],
+      "seedlingSimplified": "Give someone a smile today."
+    },
+    "shinePrompt": "Who did your Kind Eyes help today?"
+  }
+]
