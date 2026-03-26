@@ -1,0 +1,187 @@
+[
+  {
+    "id": "fc-001",
+    "worldId": "family-cove",
+    "title": "The Warm Welcome Mat",
+    "guideId": "joyful-otter",
+    "caselCompetency": "self-awareness",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "heart",
+    "xpReward": 15,
+    "order": 1,
+    "story": {
+      "title": "Joyful Otter Opens the Door",
+      "pages": [
+        {
+          "text": "Joyful Otter heard a knock at the door of her cozy paper-craft cove. Her grandmother had come to visit, carrying a basket of warm muffins.",
+          "narratorLine": "Sometimes the best feeling in the world is when someone you love walks through the door."
+        },
+        {
+          "text": "Otter ran to give Grandmother the biggest hug she could. 'I'm so happy you're here!' she squeaked. Grandmother's eyes sparkled like tiny stars.",
+          "narratorLine": "A warm welcome can make someone feel like the most important person in the whole world."
+        },
+        {
+          "text": "Together they set the table with paper-flower napkins and shared the muffins. Otter realized that saying 'I'm glad you're here' was like giving a gift made of words.",
+          "narratorLine": "When we welcome someone with love, our home becomes the warmest place on earth."
+        }
+      ]
+    },
+    "doAction": {
+      "instruction": "The next time a family member comes home, greet them with a smile and say 'I'm so glad you're here!'",
+      "steps": [
+        "Watch for a family member to come home or walk into the room.",
+        "Look at them, smile, and say 'I'm so glad you're here!'"
+      ],
+      "seedlingSimplified": "Give a family member a big hug when they come home."
+    },
+    "shinePrompt": "How did your family member look when you welcomed them?"
+  },
+  {
+    "id": "fc-002",
+    "worldId": "family-cove",
+    "title": "The Helping Paws Dinner",
+    "guideId": "sweet-skunk",
+    "caselCompetency": "self-management",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "hands",
+    "xpReward": 20,
+    "order": 2,
+    "story": {
+      "title": "Sweet Skunk Sets the Table",
+      "pages": [
+        {
+          "text": "Sweet Skunk's mama was busy in the kitchen, stirring a big pot of soup. Skunk could see she was working very hard, and her tail drooped a little with tiredness.",
+          "narratorLine": "When we really look at the people we love, we can see when they need a helping hand."
+        },
+        {
+          "text": "Without being asked, Skunk tiptoed over and began placing paper-craft bowls and spoons on the table, one by one. Each bowl was set with care, like a little love letter.",
+          "narratorLine": "Helping without being asked is one of the kindest things you can do."
+        },
+        {
+          "text": "When Mama turned around and saw the beautiful table, her tail lifted high with joy. 'Oh, Skunk! You made dinnertime feel like a celebration!' They shared the warmest meal together.",
+          "narratorLine": "Small helping hands can lift a big weight off someone's heart."
+        }
+      ]
+    },
+    "doAction": {
+      "instruction": "Help set the table for a meal without being asked. Place plates, cups, or napkins for everyone.",
+      "steps": [
+        "Notice when a grown-up starts getting a meal ready.",
+        "Ask if you can help, or quietly begin placing plates and napkins on the table."
+      ],
+      "seedlingSimplified": "Put a napkin next to each plate at the table."
+    },
+    "shinePrompt": "What did it feel like to help your family without being asked?"
+  },
+  {
+    "id": "fc-003",
+    "worldId": "family-cove",
+    "title": "The Listening Shell",
+    "guideId": "gentle-deer",
+    "caselCompetency": "social-awareness",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "eyes",
+    "xpReward": 15,
+    "order": 3,
+    "story": {
+      "title": "Gentle Deer Finds a Story",
+      "pages": [
+        {
+          "text": "Gentle Deer found a beautiful paper-craft shell on the shore of Family Cove. 'If you hold it to your ear, you can hear someone's story,' whispered the wind.",
+          "narratorLine": "Listening is like holding a shell to your heart — you hear things you never noticed before."
+        },
+        {
+          "text": "Deer sat beside her grandfather and held the shell between them. Grandfather began to tell a story about when he was little. Deer listened so carefully that the whole cove grew quiet.",
+          "narratorLine": "When we truly listen to someone, we give them the gift of feeling important."
+        },
+        {
+          "text": "When the story was finished, Deer said, 'Tell me more, Grandpa.' His eyes crinkled with happiness. The shell seemed to glow, because it was full of love now.",
+          "narratorLine": "Every person in your family has a story worth hearing."
+        }
+      ]
+    },
+    "doAction": {
+      "instruction": "Sit with a family member and ask them to tell you a story about when they were young. Listen without interrupting.",
+      "steps": [
+        "Find a quiet moment and ask a family member, 'Can you tell me a story about when you were little?'",
+        "Sit still, look at them, and listen to the whole story before you speak."
+      ],
+      "seedlingSimplified": "Ask a grown-up to tell you a short story and listen quietly."
+    },
+    "shinePrompt": "What was your favorite part of the story you heard?"
+  },
+  {
+    "id": "fc-004",
+    "worldId": "family-cove",
+    "title": "The Paper-Heart Letter",
+    "guideId": "sharing-squirrel",
+    "caselCompetency": "relationship-skills",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "heart",
+    "xpReward": 20,
+    "order": 4,
+    "story": {
+      "title": "Sharing Squirrel Writes with Love",
+      "pages": [
+        {
+          "text": "Sharing Squirrel wanted to tell her brother how much he meant to her, but every time she tried, the words got shy and hid behind her teeth.",
+          "narratorLine": "Sometimes our feelings are easier to share when we write them down."
+        },
+        {
+          "text": "So Squirrel found a piece of paper, folded it into a tiny heart, and drew a picture of her and her brother playing together. She wrote, 'You make my days brighter.'",
+          "narratorLine": "A letter from the heart is a treasure that someone can keep forever."
+        },
+        {
+          "text": "She slipped the paper heart under her brother's pillow. That night, he found it and came running with the biggest smile. They hugged and laughed until the stars peeked in.",
+          "narratorLine": "When we share our love out loud — or on paper — it grows even bigger."
+        }
+      ]
+    },
+    "doAction": {
+      "instruction": "Make a small card or draw a picture for a family member telling them one thing you love about them.",
+      "steps": [
+        "Get a piece of paper and crayons or markers.",
+        "Draw a picture or write a short note telling a family member something you love about them, and give it to them."
+      ],
+      "seedlingSimplified": "Draw a heart on paper and give it to someone in your family."
+    },
+    "shinePrompt": "How did your family member react when they got your card?"
+  },
+  {
+    "id": "fc-005",
+    "worldId": "family-cove",
+    "title": "The Fair-Share Tide",
+    "guideId": "brave-bear",
+    "caselCompetency": "responsible-decision-making",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "hands",
+    "xpReward": 20,
+    "order": 5,
+    "story": {
+      "title": "Brave Bear Shares the Last Cookie",
+      "pages": [
+        {
+          "text": "Brave Bear opened the cookie jar and found just one cookie left. His tummy rumbled, but then he heard his little sister padding into the kitchen.",
+          "narratorLine": "Sometimes being brave means choosing someone else's happiness alongside your own."
+        },
+        {
+          "text": "Bear thought for a moment. He carefully broke the cookie in half — one piece for him and one for his sister. It wasn't easy, but it felt right.",
+          "narratorLine": "Fair sharing doesn't always mean equal — it means thinking about what everyone needs."
+        },
+        {
+          "text": "His sister's face lit up like a paper lantern. 'Thank you, Bear!' she said. And somehow, that half-cookie tasted better than a whole one ever could.",
+          "narratorLine": "When we share fairly, everyone's heart feels full — even if the cookie is small."
+        }
+      ]
+    },
+    "doAction": {
+      "instruction": "The next time you have a treat or a toy, offer to share it fairly with a sibling or family member.",
+      "steps": [
+        "When you have something shareable — a snack, crayons, or a toy — pause and think of someone nearby.",
+        "Offer them a fair share and notice how it makes you both feel."
+      ],
+      "seedlingSimplified": "Share a snack with someone in your family."
+    },
+    "shinePrompt": "Was it hard or easy to share? How did it feel afterward?"
+  }
+]

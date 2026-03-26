@@ -1,0 +1,127 @@
+[
+  {
+    "id": "ff-001",
+    "worldId": "friendship-forest",
+    "title": "The Listening Tree",
+    "guideId": "loyal-dog",
+    "caselCompetency": "relationship-skills",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "eyes",
+    "xpReward": 15,
+    "order": 1,
+    "story": {
+      "title": "Loyal Dog Learns to Listen",
+      "pages": [
+        { "text": "Loyal Dog loved to talk! He could bark about his favorite stick for hours. But one day, his friend Gentle Deer was very quiet.", "narratorLine": "Sometimes being a good friend means being quiet and listening." },
+        { "text": "'Are you okay?' Dog asked. Then he did something hard — he stopped talking and just listened. Deer shared that she was feeling lonely.", "narratorLine": "Generous Listening means giving someone your whole attention." },
+        { "text": "After Deer finished, Dog said, 'Thank you for telling me.' A beautiful tree grew between them, its branches reaching wide. 'That's the Listening Tree,' said Deer. 'It grows when friends truly hear each other.'", "narratorLine": "Can you be a generous listener today?" }
+      ]
+    },
+    "doAction": {
+      "instruction": "Practice generous listening — give someone your full attention.",
+      "steps": ["Find a friend or family member.", "Ask them about their day.", "Listen without interrupting. Just listen with your whole heart."],
+      "seedlingSimplified": "Listen to someone tell you a story."
+    },
+    "shinePrompt": "What did you learn by listening?"
+  },
+  {
+    "id": "ff-002",
+    "worldId": "friendship-forest",
+    "title": "The Welcome Path",
+    "guideId": "sweet-skunk",
+    "caselCompetency": "responsible-decision-making",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "heart",
+    "xpReward": 15,
+    "order": 2,
+    "story": {
+      "title": "Sweet Skunk Makes Room",
+      "pages": [
+        { "text": "Sweet Skunk saw a new animal at the edge of the forest — a small hedgehog, curled up tight. 'Everyone stays away from me,' Hedgehog said sadly.", "narratorLine": "Everyone deserves to feel like they belong." },
+        { "text": "'I know how that feels,' said Skunk softly. 'Some animals stay away from me too. But I know a secret — everyone belongs in this forest.'", "narratorLine": "Sweet Skunk knows that being different is what makes us special." },
+        { "text": "Skunk held out her paw. 'Come walk with me.' As they walked together, flowers bloomed along the path. The forest was more beautiful with everyone in it.", "narratorLine": "Is there someone you could welcome today?" }
+      ]
+    },
+    "doAction": {
+      "instruction": "Welcome someone or include someone who might feel left out.",
+      "steps": ["Think of someone who might feel alone — at school, at the playground, or in your neighborhood.", "Invite them to join you in something.", "Make them feel like they belong."],
+      "seedlingSimplified": "Say 'hi' to someone new."
+    },
+    "shinePrompt": "How did it feel to make someone feel welcome?"
+  },
+  {
+    "id": "ff-003",
+    "worldId": "friendship-forest",
+    "title": "The Compliment Blossoms",
+    "guideId": "loyal-dog",
+    "caselCompetency": "relationship-skills",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "heart",
+    "xpReward": 15,
+    "order": 3,
+    "story": {
+      "title": "Words That Bloom",
+      "pages": [
+        { "text": "Loyal Dog discovered something magical in Friendship Forest — every kind word he said made a flower bloom!", "narratorLine": "Kind words are powerful. They can change someone's whole day." },
+        { "text": "'You're a great climber!' he told Squirrel. Pop! A pink flower. 'You have the kindest smile!' he told Deer. Pop! A golden flower.", "narratorLine": "A compliment is a gift you can give anytime, anywhere." },
+        { "text": "Soon the whole forest was filled with colorful blossoms. 'I didn't know my words could do all this,' Dog said in wonder. 'Kind words always grow,' said Squirrel.", "narratorLine": "Ready to grow some flowers of your own? Give three compliments today!" }
+      ]
+    },
+    "doAction": {
+      "instruction": "Give three genuine compliments to three different people.",
+      "steps": ["Think about what you appreciate about three people.", "Tell each one something kind and specific.", "Watch how it makes them feel!"],
+      "seedlingSimplified": "Tell someone something nice."
+    },
+    "shinePrompt": "How did people react to your kind words?"
+  },
+  {
+    "id": "ff-004",
+    "worldId": "friendship-forest",
+    "title": "The Sorry Bridge",
+    "guideId": "gentle-deer",
+    "caselCompetency": "social-awareness",
+    "ageBands": ["sprout", "bloomer"],
+    "kindPrinciple": "heart",
+    "xpReward": 20,
+    "order": 4,
+    "story": {
+      "title": "Building Bridges with Sorry",
+      "pages": [
+        { "text": "Gentle Deer accidentally stepped on a beautiful mushroom that Squirrel had been growing. 'Oh no,' Deer gasped. Squirrel's eyes filled with tears.", "narratorLine": "Sometimes we hurt people even when we don't mean to." },
+        { "text": "'I'm so sorry,' said Deer. 'I know that mushroom was special to you. I should have been more careful.' She didn't make excuses. She just felt sorry, truly.", "narratorLine": "A real apology means understanding how the other person feels." },
+        { "text": "Squirrel sniffled, then smiled. 'Thank you for saying that.' Together they planted a new mushroom. Where the old one broke, a little bridge grew, connecting their two favorite trees.", "narratorLine": "Sorry isn't just a word — it's a bridge back to each other." }
+      ]
+    },
+    "doAction": {
+      "instruction": "If you've hurt someone's feelings recently, say a genuine sorry.",
+      "steps": ["Think about whether you've hurt someone recently, even by accident.", "Tell them you're sorry and say what you're sorry for.", "Ask if there's something you can do to help."],
+      "seedlingSimplified": "Practice saying 'I'm sorry' with a grown-up."
+    },
+    "shinePrompt": "What did you learn about apologies?"
+  },
+  {
+    "id": "ff-005",
+    "worldId": "friendship-forest",
+    "title": "The Teamwork Vine",
+    "guideId": "sharing-squirrel",
+    "caselCompetency": "relationship-skills",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "hands",
+    "xpReward": 15,
+    "order": 5,
+    "story": {
+      "title": "Stronger Together",
+      "pages": [
+        { "text": "A huge berry grew at the very top of the tallest tree. Sharing Squirrel tried to reach it alone but couldn't. Brave Bear tried too — still too high!", "narratorLine": "Some things are too big to do alone, and that's okay!" },
+        { "text": "'What if we work together?' asked Squirrel. Bear stood strong while Squirrel climbed on his shoulders. Dog steadied them both. Deer cheered them on.", "narratorLine": "Everyone has something to offer a team." },
+        { "text": "They reached the berry together! And when they shared it, it tasted even sweeter. A vine grew down the tree with berries for everyone. 'Teamwork made more than we ever could alone,' said Bear.", "narratorLine": "Who can you team up with today?" }
+      ]
+    },
+    "doAction": {
+      "instruction": "Do something together with someone — as a team!",
+      "steps": ["Pick a task: clean up, build something, or make something.", "Invite someone to help you — or offer to help them.", "Work together and celebrate what you made!"],
+      "seedlingSimplified": "Help someone with a job."
+    },
+    "shinePrompt": "What did you and your team accomplish together?"
+  }
+]

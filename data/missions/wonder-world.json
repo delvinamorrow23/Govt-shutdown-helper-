@@ -1,0 +1,187 @@
+[
+  {
+    "id": "ww-001",
+    "worldId": "wonder-world",
+    "title": "The Many-Colored Map",
+    "guideId": "gentle-deer",
+    "caselCompetency": "social-awareness",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "eyes",
+    "xpReward": 20,
+    "order": 1,
+    "story": {
+      "title": "Gentle Deer Unfolds the World",
+      "pages": [
+        {
+          "text": "Gentle Deer found a paper-craft map that unfolded like a flower. Each petal was a different color and showed a different part of the world, with houses and foods she had never seen before.",
+          "narratorLine": "The world is full of people who live, eat, and celebrate in wonderfully different ways."
+        },
+        {
+          "text": "Deer traced her hoof along the map. 'Why is everything so different?' she wondered. A wise old tortoise smiled. 'Different is what makes the world interesting.'",
+          "narratorLine": "When we look at differences with kind eyes, we see beauty instead of strangeness."
+        },
+        {
+          "text": "Deer folded the map into a paper crown and wore it proudly. 'I want to learn about every petal!' she said. And Wonder World sparkled, because curiosity and kindness go hand in hand.",
+          "narratorLine": "Being curious about other people's lives is one of the kindest things your mind can do."
+        }
+      ]
+    },
+    "doAction": {
+      "instruction": "With a grown-up, learn one fact about a country or culture different from your own. Share what you learned with someone.",
+      "steps": [
+        "Ask a grown-up to help you learn one interesting thing about a country you've never visited — a food, a game, or a holiday.",
+        "Tell a friend or family member the cool thing you learned."
+      ],
+      "seedlingSimplified": "Ask a grown-up to tell you about a food from another country."
+    },
+    "shinePrompt": "What did you learn, and what was the most interesting part?"
+  },
+  {
+    "id": "ww-002",
+    "worldId": "wonder-world",
+    "title": "The Brave Voice Balloon",
+    "guideId": "brave-bear",
+    "caselCompetency": "self-management",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "heart",
+    "xpReward": 20,
+    "order": 2,
+    "story": {
+      "title": "Brave Bear Speaks Up",
+      "pages": [
+        {
+          "text": "Brave Bear saw a little paper-craft bird sitting alone at the edge of the playground. The other birds were laughing and playing, but no one had invited the little bird to join.",
+          "narratorLine": "Sometimes being brave doesn't mean being loud — it means speaking up for someone who feels invisible."
+        },
+        {
+          "text": "Bear's heart pounded like a tiny drum. It felt scary to walk over. But he took a deep breath, and his words floated out like a bright balloon: 'Hey, would you like to play with us?'",
+          "narratorLine": "A brave voice starts with a kind heart that won't look away."
+        },
+        {
+          "text": "The little bird's eyes went wide with surprise, then her whole face bloomed into a smile. She joined the game, and soon her laughter was the loudest of all.",
+          "narratorLine": "One brave invitation can change someone's whole day — and maybe even yours."
+        }
+      ]
+    },
+    "doAction": {
+      "instruction": "If you see someone sitting alone at school or at the park, walk over and invite them to play or sit with you.",
+      "steps": [
+        "Look around at recess, in class, or at the park for someone who seems left out.",
+        "Walk up to them, smile, and say 'Would you like to play with me?' or 'Want to sit with us?'"
+      ],
+      "seedlingSimplified": "Say hi to someone who is sitting by themselves."
+    },
+    "shinePrompt": "How did it feel to be brave and include someone?"
+  },
+  {
+    "id": "ww-003",
+    "worldId": "wonder-world",
+    "title": "The Peaceful Pinwheel",
+    "guideId": "joyful-otter",
+    "caselCompetency": "relationship-skills",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "heart",
+    "xpReward": 20,
+    "order": 3,
+    "story": {
+      "title": "Joyful Otter Finds Calm in the Storm",
+      "pages": [
+        {
+          "text": "A gust of wind blew through Wonder World and knocked over everyone's paper-craft towers. Joyful Otter and Sharing Squirrel both reached for the last standing block at the same time.",
+          "narratorLine": "Disagreements happen to everyone — even the best of friends."
+        },
+        {
+          "text": "Their voices got louder and louder, like a storm building. Then Otter noticed a paper pinwheel spinning in the breeze. She stopped, took a deep breath, and watched it turn — slower, slower, calm.",
+          "narratorLine": "When you feel a storm inside, a deep breath can be like pressing pause."
+        },
+        {
+          "text": "'Let's take turns,' Otter said gently. Squirrel smiled and nodded. They rebuilt both towers together, even taller than before. The pinwheel spun happily in the peaceful breeze.",
+          "narratorLine": "When we solve problems with patience, we build something better than we ever could alone."
+        }
+      ]
+    },
+    "doAction": {
+      "instruction": "The next time you disagree with a friend or sibling, stop, take three deep breaths, and suggest taking turns instead of arguing.",
+      "steps": [
+        "When you feel a disagreement starting, pause and take three slow, deep breaths.",
+        "Use a calm voice to say 'Let's take turns' or 'How can we both get what we need?'"
+      ],
+      "seedlingSimplified": "When you feel upset, stop and take three big breaths."
+    },
+    "shinePrompt": "Did taking a breath help you feel calmer? What happened next?"
+  },
+  {
+    "id": "ww-004",
+    "worldId": "wonder-world",
+    "title": "The Dream-Leader Crown",
+    "guideId": "sharing-squirrel",
+    "caselCompetency": "responsible-decision-making",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "hands",
+    "xpReward": 25,
+    "order": 4,
+    "story": {
+      "title": "Sharing Squirrel Leads the Way",
+      "pages": [
+        {
+          "text": "The animals of Wonder World needed to build a new bridge across the river. Everyone had ideas, but nobody knew where to start. Sharing Squirrel raised her paw. 'Let's listen to every idea first.'",
+          "narratorLine": "A true leader doesn't just talk — they make sure everyone gets a turn to speak."
+        },
+        {
+          "text": "Squirrel went around the circle. Otter suggested using logs. Deer wanted to weave vines. Bear offered to carry heavy stones. Squirrel listened to each one and found a way to use them all.",
+          "narratorLine": "The best plans come from many minds working together."
+        },
+        {
+          "text": "By sunset, the bridge stood strong — logs for the base, vines for the rails, and stones for the path. Everyone cheered. 'We all built this!' Squirrel said, and she meant it.",
+          "narratorLine": "Real leaders don't take all the credit — they share the glow with everyone."
+        }
+      ]
+    },
+    "doAction": {
+      "instruction": "The next time you play or work with a group, ask everyone for their ideas before deciding what to do. Try to include at least one idea from each person.",
+      "steps": [
+        "When your group needs to make a decision, say 'Let's hear everyone's idea first.'",
+        "Listen to each person, then suggest a plan that uses a piece of everyone's idea."
+      ],
+      "seedlingSimplified": "Ask a friend 'What do you want to play?' before choosing a game."
+    },
+    "shinePrompt": "How did it feel to include everyone's ideas?"
+  },
+  {
+    "id": "ww-005",
+    "worldId": "wonder-world",
+    "title": "The Kindness Constellation",
+    "guideId": "sweet-skunk",
+    "caselCompetency": "self-awareness",
+    "ageBands": ["seedling", "sprout", "bloomer"],
+    "kindPrinciple": "eyes",
+    "xpReward": 25,
+    "order": 5,
+    "story": {
+      "title": "Sweet Skunk Counts Her Stars",
+      "pages": [
+        {
+          "text": "Sweet Skunk lay on a hilltop in Wonder World, gazing at the paper-craft night sky. Each star, the old tortoise once told her, lights up when someone does something kind.",
+          "narratorLine": "Every act of kindness — big or small — leaves a mark that shines."
+        },
+        {
+          "text": "Skunk began to count. 'Today I shared my lunch — that's one. I said sorry when I bumped into Deer — that's two. I cheered for Bear when he was scared — that's three.' The stars twinkled brighter.",
+          "narratorLine": "When we look back at our day, we often find more kindness than we expected."
+        },
+        {
+          "text": "Soon Skunk saw a whole constellation shaped like a heart. She realized that all her small kind moments had connected into something beautiful. 'I made that,' she whispered, full of wonder.",
+          "narratorLine": "You are already full of kindness — sometimes you just need to stop and see it."
+        }
+      ]
+    },
+    "doAction": {
+      "instruction": "Before bed, sit with a grown-up and name three kind things you did today. Hold up a finger for each one, like counting stars.",
+      "steps": [
+        "At bedtime, think back through your whole day.",
+        "Tell a grown-up three kind things you did — big or small — and hold up one finger for each."
+      ],
+      "seedlingSimplified": "Tell a grown-up one nice thing you did today."
+    },
+    "shinePrompt": "Which of your three kind moments made you feel the proudest?"
+  }
+]
