@@ -1,18 +1,24 @@
+import './globals.css';
+import type { Metadata, Viewport } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
+  title: 'Gleea — Kindness stories for little hearts',
+  description:
+    'Gleea is a kindness and social-emotional learning app for children ages 3 to 6. ' +
+    'Read a story with your Animal Guide, do a kindness mission, and shine together as a family.',
+  icons: [{ rel: 'icon', url: '/favicon.ico' }],
+};
 
-  title: "Shutdown Helper — Official links and local help (PA & NY)",
-  description: "Personalized guidance during a federal shutdown. Find official agency status and nearby community resources in Pennsylvania and New York.",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
-  openGraph: { title: "Shutdown Helper — PA and NY", description: "Official links and local help during a federal shutdown.", url: "https://example.org", siteName: "Shutdown Helper", type: "website" }
+export const viewport: Viewport = {
+  themeColor: '#0e1030',
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen">
-        {children}
-      </body>
+      <body className="min-h-screen antialiased">{children}</body>
     </html>
   );
 }
