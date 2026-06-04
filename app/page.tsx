@@ -96,9 +96,6 @@ export default function Page() {
     }
   }
 
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [state, setState] = useState<string>('');
-
   const selectedCats = useMemo(() => {
     const p = answers.profile as keyof typeof mapping;
     return p ? mapping[p] : [];
