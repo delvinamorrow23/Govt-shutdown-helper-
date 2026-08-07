@@ -162,7 +162,10 @@ body{
   border-bottom:1.4px solid var(--navy);
   padding-bottom:9px;
   margin-bottom:16px;
+  break-after:avoid;
+  page-break-after:avoid;
 }
+.sec-head + p, .sec-head + .lead{ break-before:avoid; }
 .sec-num{
   font-family:'Source Serif Disp',serif;
   font-weight:600;
@@ -591,7 +594,7 @@ ul.terms li::before{
     <span class="sec-kicker">The situation</span>
   </div>
 
-  <p class="lead">Refugee Assistance Alliance runs five program areas across economic support, emotional support, education, employment, and English instruction. The numbers below are the case you make to funders, and every one of them has to be assembled by hand from information that lives outside your system.</p>
+  <p class="lead">Refugee Assistance Alliance runs five program areas across economic support, emotional support, education, employment, and English instruction. Ninety-six percent of the households you serve now have at least one person employed. Sixty-six percent of your adult clients are enrolled in English classes. Those numbers are the case you make to funders, and every one of them has to be assembled by hand from information that lives outside your system.</p>
 
   <div class="stat-row">
     <div class="stat"><div class="n">96%</div><div class="l">of households you serve now have at least one person employed</div></div>
@@ -599,10 +602,10 @@ ul.terms li::before{
     <div class="stat"><div class="n">~50</div><div class="l">questionnaires and surveys that are not integrated</div></div>
   </div>
 
-  <p>You told me you have roughly fifty questionnaires and surveys that are not integrated. That is not a filing problem. It is the reason proving your impact costs your team days it does not have &mdash; at exactly the moment resettlement funding has been removed, food assistance has been cut, and healthcare access is set to end in the fall.</p>
+  <p>You told me you have roughly fifty questionnaires and surveys that are not integrated. That is not a filing problem. It is the reason proving your impact costs your team days it does not have, at exactly the moment resettlement funding has been removed, food assistance has been cut, and healthcare access is set to end in the fall.</p>
 
   <div class="callout">
-    <p>Your team is about a week into Claude, with no shared way of working in it, no policy governing what goes into it, and refugee family information sitting in the systems it would touch. <strong>The appetite is there. The structure is not.</strong></p>
+    <p>Meanwhile your team is about a week into Claude, with no shared way of working in it, no policy governing what goes into it, and refugee family information sitting in the systems it would touch. <strong>The appetite is there. The structure is not.</strong></p>
   </div>
 </section>
 
@@ -640,7 +643,7 @@ ul.terms li::before{
   </div>
 
   <div class="callout" style="margin-top:15px;">
-    <p>All work runs on our <strong>closed-network security model</strong>. Your data, your community narratives, and your clients' information stay protected throughout. For an organization holding records on refugee families, this is not a feature we added &mdash; it is the reason we built the practice this way.</p>
+    <p>All work runs on our <strong>closed-network security model</strong>. Your data, your community narratives, and your clients' information stay protected throughout. For an organization holding records on refugee families, this is not a feature we added. It is the reason we built the practice this way.</p>
   </div>
 </section>
 
@@ -666,14 +669,14 @@ ul.terms li::before{
       <div class="badge">LE</div>
       <div class="body">
         <h4>Senior Advisor for Learning &amp; Evaluation, Ed.D.</h4>
-        <p>Designs the evaluation and learning methodology behind every Builder engagement, which means the work is measured against whether your team's capacity actually changed &mdash; not whether a tool was installed. For an organization that reports outcomes to funders, this is the difference between saying you adopted AI and showing what it did.</p>
+        <p>Designs the evaluation and learning methodology behind every Builder engagement, which means the work is measured against whether your team's capacity actually changed, not whether a tool was installed. For an organization that reports outcomes to funders, this is the difference between saying you adopted AI and showing what it did.</p>
       </div>
     </div>
     <div class="member">
       <div class="badge">PR</div>
       <div class="body">
         <h4>Program &amp; Research Support</h4>
-        <p>A Navy veteran with nine years of federal program management at the U.S. Department of State, currently completing a master's degree in AI Management at Georgetown University. The federal programs and funding structures shaping refugee services are the environment this work came from, which is useful context as you navigate what is being cut and what remains.</p>
+        <p>A Navy veteran with nine years of federal program management at the U.S. Department of State, currently completing a master's degree in AI Management at Georgetown University. That background is directly relevant to your situation. The federal programs and funding structures shaping refugee services are the environment this work came from, which is useful context as you navigate what is being cut and what remains.</p>
       </div>
     </div>
   </div>
@@ -696,7 +699,7 @@ ul.terms li::before{
   <div class="gloss">
     <div class="gitem">
       <h4>AI use policy &amp; values-aligned guardrails</h4>
-      <p>A short, readable document telling your staff and volunteers what they can and cannot do with AI &mdash; which tools are approved, what client information never goes into one, and what to do when someone is unsure. Your volunteer model means people outside your payroll touch client information, which raises the stakes. It also gives you something concrete to point to when a board member or a funder asks how you are handling this.</p>
+      <p>A short, readable document telling your staff and volunteers what they can and cannot do with AI. Which tools are approved, what client information never goes into one, and what to do when someone is unsure. Your volunteer model means people outside your payroll touch client information, which raises the stakes. It also gives you something concrete to point to when a board member or a funder asks how you are handling this.</p>
     </div>
     <div class="gitem">
       <h4>Salesforce platform diagnostic</h4>
@@ -713,8 +716,9 @@ ul.terms li::before{
     </div>
     <div class="gitem">
       <h4>Systems map &amp; integration design</h4>
-      <p>You mentioned three systems, and they do not all connect the same way. Your online giving platform is the easy one &mdash; platforms in that category typically build and maintain their own Salesforce connector, it works with either version of Salesforce for Nonprofits, and the cost is usually modest. If that connection is not switched on today, turning it on is a setup task rather than a project, and I will tell you so plainly rather than charge you to find out.</p>
-      <p>Your donor management system is a different situation. The platforms built specifically for small nonprofits are generally positioned as alternatives to Salesforce rather than partners to it, which means most do not publish a native Salesforce integration at all. Where that holds, connecting the two means building something custom &mdash; real work with real cost. That raises a question worth settling before anyone builds anything: whether two systems should both hold constituent records, or whether one becomes your source of truth. Getting it wrong is expensive in either direction.</p>
+      <p>You mentioned three systems, and they do not all connect the same way. Your online giving platform is the easy one. Platforms in that category typically build and maintain their own Salesforce connector, it works with either version of Salesforce for Nonprofits, and the cost is usually modest. If that connection is not switched on today, turning it on is a setup task rather than a project, and I will tell you so plainly rather than charge you to find out.</p>
+      <p>Your donor management system is a different situation. The platforms built specifically for small nonprofits are generally positioned as alternatives to Salesforce rather than partners to it, which means most do not publish a native Salesforce integration at all. Where that holds, connecting the two means building something custom, and that is real work with real cost. Confirming exactly what yours supports is part of the systems map.</p>
+      <p>That raises a question worth settling before anyone builds anything: whether two systems should both hold constituent records, or whether one becomes your source of truth. That is a strategy decision, and getting it wrong is expensive in either direction.</p>
     </div>
   </div>
 </section>
@@ -747,14 +751,14 @@ ul.terms li::before{
         <li>Half-day strategy workshop, remote or in person</li>
         <li>Contextual AI literacy training for one team</li>
         <li>Prioritized use-case identification across your five program areas</li>
-        <li>Quick-win versus longer-term buildout analysis</li>
+        <li>Quick-win versus longer-term buildout analysis, so you know what is cheap and what is not</li>
         <li>Data and security risk overview, written for an organization holding refugee family records</li>
-        <li>A systems map showing how Salesforce, your donor management system, and your online giving platform currently relate</li>
+        <li>A systems map showing how Salesforce, your donor management system, and your online giving platform currently relate, where data is duplicated, and where it stops moving</li>
         <li>Salesforce platform diagnostic and a check on whether your giving platform data is reaching Salesforce today</li>
         <li>Thirty days of post-delivery advisory support</li>
         <li>Led directly by the Founder and Principal</li>
       </ul>
-      <div class="tier-note"><b>Why this tier exists.</b> Foundation is a real diagnostic, not a thinner version of the full service. Every element is grounded in the People-Centered Intelligence methodology, so your context, your values, and your capacity shape the recommendations. What it does not do is build anything or connect anything.</div>
+      <div class="tier-note"><b>Why this tier exists.</b> Foundation is a real diagnostic, not a thinner version of the full service. Every element is grounded in the People-Centered Intelligence methodology, which means your context, your values, and your capacity shape the recommendations. What it does not do is build anything or connect anything.</div>
     </div>
   </div>
 
@@ -774,25 +778,25 @@ ul.terms li::before{
       <div class="incl-label">Everything in Foundation, plus</div>
       <ul class="checks">
         <li>One custom AI assistant scoped through the PCI methodology, built around your highest-cost recurring workflow</li>
-        <li>Closed-network, values-aligned document training so the assistant knows your programs, language, and reporting formats</li>
+        <li>Closed-network, values-aligned document training so the assistant knows your programs, your language, and your reporting formats</li>
         <li>Enterprise-grade security deployment</li>
         <li>Contextual staff onboarding and adoption support across your eleven-person team, with a separate session for your four directors</li>
-        <li>Integration with one to two existing tools &mdash; for RAA, the Salesforce work and your survey and questionnaire pipeline</li>
+        <li>Integration with one to two existing tools, which for RAA means the Salesforce work and your survey and questionnaire pipeline</li>
         <li>Ninety days of post-launch support and an iteration cycle</li>
         <li>Monthly check-in calls throughout the support window</li>
-        <li>Delivered by the full three-person team &mdash; strategy and governance, evaluation methodology, and program and research support</li>
+        <li>Delivered by the full three-person team rather than a single consultant, covering strategy and governance, evaluation methodology, and program and research support</li>
       </ul>
-      <div class="tier-note"><b>Why this is the recommendation.</b> Policy without a working system tends to sit in a drawer. Your team is already using these tools daily, so the risk and the opportunity are both live right now. The assistant is where the time comes back: the same system that shortens funder reporting also shortens intake. <b>Scoped from $18,000</b> depending on data complexity, integration requirements, and number of users; the figure above reflects a well-defined single use case for a team your size.</div>
+      <div class="tier-note"><b>Why this is the recommendation.</b> Policy without a working system tends to sit in a drawer. Your team is already using these tools daily, so the risk and the opportunity are both live right now. The assistant is where the time comes back. If compiling your impact numbers currently takes days of staff time each reporting cycle, and it almost certainly does given where that data lives, that is the workflow to build around. The same system that shortens funder reporting also shortens intake. <b>Builder is scoped from $18,000</b> depending on data complexity, integration requirements, and number of users. The figure above reflects a well-defined single use case for a team your size.</div>
     </div>
   </div>
 
   <!-- Catalyst -->
   <div class="catalyst">
     <div class="ch">
-      <div class="cn">Looking further out &mdash; Catalyst</div>
+      <div class="cn">Looking further out: Catalyst</div>
       <div class="cp">from $55,000</div>
     </div>
-    <p>Our full engagement: org-wide AI architecture, agentic systems, complete platform integrations, quarterly strategic reviews, an annual AI audit, and board reporting support. Built for organizations operating across many departments with sustained complexity. I am not proposing it here &mdash; it is more than Refugee Assistance Alliance needs today. I mention it so you know the path exists if your systems and funding grow into it.</p>
+    <p>Catalyst is our full engagement: org-wide AI architecture, agentic systems, complete platform integrations, quarterly strategic reviews, an annual AI audit, and board reporting support. It begins at $55,000 and is built for organizations operating across many departments with sustained complexity. I am not proposing it here. It is more than Refugee Assistance Alliance needs today, and more than makes sense at your current stage. I mention it so you know the path exists if your systems and funding grow into it.</p>
   </div>
 </section>
 
@@ -844,7 +848,7 @@ ul.terms li::before{
     <span class="sec-kicker">Paying for the work</span>
   </div>
 
-  <p>You mentioned federal grants ending this year that account for roughly a third of your budget. That is exactly the pressure that makes this work harder to fund &mdash; and more valuable to have.</p>
+  <p>You mentioned federal grants ending this year that account for roughly a third of your budget. That is exactly the pressure that makes this work harder to fund and more valuable to have.</p>
   <p>Capacity-building and technology grants are an active funding category, and this work fits them well because it <strong>strengthens the organization rather than covering operating costs</strong>. You already hold relationships with funders who support organizational capacity. I am glad to help you frame this for a specific funder, and funder-sponsored engagements are welcome.</p>
   <div class="callout">
     <p>Separately, if your Salesforce licenses came through the Power of Us donation program, the retail value can typically be claimed as an <strong>in-kind contribution</strong> for grant and matching purposes. Worth confirming with Salesforce, since it can strengthen a match at no cost to you.</p>
@@ -859,7 +863,7 @@ ul.terms li::before{
     <span class="sec-kicker">Terms</span>
   </div>
   <ul class="terms">
-    <li><strong>Payment in two installments</strong> &mdash; half at signing, half at completion.</li>
+    <li><strong>Payment in two installments:</strong> half at signing, half at completion.</li>
     <li>Sessions delivered remotely unless you prefer otherwise.</li>
     <li>Every deliverable is yours to keep and reuse, with no ongoing license or dependency on us.</li>
     <li>Your team participates in scoping, testing, and feedback throughout. That is the methodology, not a courtesy.</li>
@@ -868,8 +872,8 @@ ul.terms li::before{
   <!-- Close -->
   <div class="close">
     <div class="eyebrow-cover">Next Step</div>
-    <h3>Tell me which tier fits, and I will send a short agreement.</h3>
-    <p>I can begin within two weeks of signing. If neither lands where you need it, say so plainly and we will shape something that does &mdash; I would rather find the right scope than lose the chance to help.</p>
+    <h3>Tell me which tier fits and I will send a short agreement.</h3>
+    <p>I can begin within two weeks of signing. If neither lands where you need it, say so plainly and we will shape something that does. I would rather find the right scope than lose the chance to help.</p>
     <div class="sign">
       <div class="who">
         <div class="nm">Delvina Morrow</div>
