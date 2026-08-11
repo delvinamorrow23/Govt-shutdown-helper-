@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>YMUai — AI Capacity and Systems Proposal</title>
+<style>
+/*FONTS_PLACEHOLDER*/
+
+:root{
+  --ink:#141d2b;
+  --navy:#1d3054;
+  --navy-2:#24406e;
+  --gold:#b3873f;
+  --gold-deep:#976f2c;
+  --paper:#ffffff;
+  --ivory:#f7f3ea;
+  --ivory-2:#f2ece0;
+  --line:#e4ddce;
+  --line-2:#d8cfba;
+  --muted:#5a6472;
+  --muted-2:#7c8593;
+  --text:#26303e;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Inter',sans-serif;
+  color:var(--text);
+  font-size:10.2pt;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-feature-settings:"kern" 1,"liga" 1,"calt" 1;
+}
+
+@page{
+  size:8.5in 11in;
+  margin:0.82in 0.82in 0.86in 0.82in;
+}
+@page cover{ margin:0; }
+
+.serif{font-family:'Source Serif Disp',serif;}
+
+/* ---------- COVER ---------- */
+.cover{
+  page:cover;
+  position:relative;
+  width:8.5in;
+  height:11in;
+  background:
+    radial-gradient(140% 90% at 82% -12%, rgba(179,135,63,0.20) 0%, rgba(179,135,63,0) 46%),
+    linear-gradient(165deg,#182842 0%, #14203a 46%, #101a2f 100%);
+  color:#f3ecdd;
+  overflow:hidden;
+  page-break-after:always;
+}
+.cover-frame{
+  position:absolute;
+  inset:0.5in;
+  border:1px solid rgba(197,166,110,0.34);
+}
+.cover-inner{
+  position:absolute;
+  inset:0.5in;
+  padding:0.72in 0.74in;
+  display:flex;
+  flex-direction:column;
+  height:auto;
+  bottom:0.5in;top:0.5in;left:0.5in;right:0.5in;
+}
+.cover-hairline{
+  position:absolute;
+  left:0;right:0;
+  height:1px;
+  background:linear-gradient(90deg,rgba(197,166,110,0) 0%,rgba(197,166,110,0.55) 20%,rgba(197,166,110,0.55) 80%,rgba(197,166,110,0) 100%);
+}
+.wordmark{
+  font-family:'Source Serif Disp',serif;
+  font-weight:900;
+  font-size:33pt;
+  letter-spacing:0.14em;
+  color:#f6efe1;
+  line-height:1;
+}
+.wordmark .ai{color:var(--gold);}
+.tagline{
+  margin-top:14px;
+  font-family:'Source Serif Txt',serif;
+  font-style:italic;
+  font-size:12.5pt;
+  color:#d7c9a9;
+  letter-spacing:0.01em;
+}
+.cover-mid{
+  margin-top:auto;
+  margin-bottom:auto;
+  padding-top:0.5in;
+}
+.eyebrow-cover{
+  font-size:8.6pt;
+  letter-spacing:0.42em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:600;
+  margin-bottom:22px;
+}
+.cover-title{
+  font-family:'Source Serif Disp',serif;
+  font-weight:600;
+  font-size:41pt;
+  line-height:1.06;
+  letter-spacing:-0.012em;
+  color:#faf5ea;
+  margin:0;
+}
+.cover-rule{
+  width:64px;height:2px;background:var(--gold);
+  margin:30px 0 26px;
+}
+.cover-prepared{
+  font-size:10.6pt;
+  line-height:1.7;
+  color:#cfc3a8;
+  max-width:5.2in;
+}
+.cover-prepared .org{
+  font-family:'Source Serif Disp',serif;
+  font-size:17pt;
+  font-weight:600;
+  color:#f3ecdd;
+  display:block;
+  margin-top:4px;
+  letter-spacing:0.005em;
+}
+.cover-foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  border-top:1px solid rgba(197,166,110,0.30);
+  padding-top:16px;
+  font-size:8.7pt;
+  letter-spacing:0.06em;
+  color:#b6ab90;
+}
+.cover-foot .att{
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+}
+.cover-foot .att b{color:#e9ddc3;font-weight:600;}
+
+/* ---------- GENERIC SECTION ---------- */
+.section{
+  padding-top:4pt;
+}
+.section + .section{ margin-top:26pt; }
+
+.sec-head{
+  display:flex;
+  align-items:baseline;
+  gap:16px;
+  border-bottom:1.4px solid var(--navy);
+  padding-bottom:9px;
+  margin-bottom:16px;
+  break-after:avoid;
+  page-break-after:avoid;
+}
+.sec-head + p, .sec-head + .lead{ break-before:avoid; }
+.sec-num{
+  font-family:'Source Serif Disp',serif;
+  font-weight:600;
+  font-size:12pt;
+  color:var(--gold-deep);
+  letter-spacing:0.02em;
+  flex:0 0 auto;
+}
+.sec-title{
+  font-family:'Source Serif Disp',serif;
+  font-weight:600;
+  font-size:16.5pt;
+  color:var(--navy);
+  letter-spacing:-0.006em;
+  margin:0;
+  line-height:1.15;
+}
+.sec-kicker{
+  margin-left:auto;
+  font-size:8pt;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--muted-2);
+  align-self:center;
+  font-weight:500;
+}
+
+p{margin:0 0 9pt;}
+.lead{
+  font-family:'Source Serif Txt',serif;
+  font-size:11.6pt;
+  line-height:1.6;
+  color:#2c3646;
+}
+strong{font-weight:600;color:var(--ink);}
+.accent{color:var(--gold-deep);font-weight:600;}
+
+/* stat row */
+.stat-row{
+  display:flex;
+  gap:12px;
+  margin:14px 0 15px;
+}
+.stat{
+  flex:1;
+  background:var(--ivory);
+  border:1px solid var(--line);
+  border-top:2.5px solid var(--gold);
+  padding:12px 14px 12px;
+  border-radius:2px;
+}
+.stat .n{
+  font-family:'Source Serif Disp',serif;
+  font-weight:600;
+  font-size:20pt;
+  color:var(--navy);
+  line-height:1;
+}
+.stat .l{
+  font-size:8.3pt;
+  color:var(--muted);
+  margin-top:6px;
+  line-height:1.35;
+}
+
+/* callout */
+.callout{
+  background:linear-gradient(180deg,#f8f4ec 0%,#f5f0e4 100%);
+  border-left:3px solid var(--gold);
+  padding:13px 18px;
+  margin:14px 0;
+  border-radius:0 3px 3px 0;
+}
+.callout p{margin:0;font-family:'Source Serif Txt',serif;font-size:10.8pt;color:#33404f;}
+
+/* pillars */
+.pillars{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:11px;
+  margin-top:6px;
+}
+.pillar{
+  background:var(--paper);
+  border:1px solid var(--line-2);
+  border-radius:3px;
+  padding:13px 15px 14px;
+  position:relative;
+}
+.pillar .pidx{
+  font-family:'Source Serif Disp',serif;
+  font-size:9.5pt;
+  color:var(--gold-deep);
+  font-weight:600;
+  letter-spacing:0.06em;
+}
+.pillar h4{
+  font-family:'Source Serif Disp',serif;
+  font-size:11.6pt;
+  color:var(--navy);
+  margin:3px 0 5px;
+  font-weight:600;
+}
+.pillar p{margin:0;font-size:9.5pt;color:var(--muted);line-height:1.5;}
+
+/* team */
+.team{margin-top:4px;}
+.member{
+  display:flex;
+  gap:15px;
+  padding:12px 0 13px;
+  border-bottom:1px solid var(--line);
+  break-inside:avoid;
+}
+.member:last-child{border-bottom:none;}
+.member .badge{
+  flex:0 0 42px;
+  height:42px;width:42px;
+  border-radius:50%;
+  background:var(--navy);
+  color:var(--gold);
+  font-family:'Source Serif Disp',serif;
+  font-weight:600;
+  font-size:13pt;
+  display:flex;align-items:center;justify-content:center;
+  margin-top:2px;
+}
+.member .body h4{
+  margin:0 0 2px;
+  font-family:'Source Serif Disp',serif;
+  font-size:12pt;
+  color:var(--navy);
+  font-weight:600;
+}
+.member .body p{margin:0;font-size:9.6pt;color:var(--muted);line-height:1.52;}
+
+/* glossary */
+.gloss{margin-top:2px;}
+.gitem{
+  padding:11px 0 11px;
+  border-bottom:1px solid var(--line);
+  break-inside:avoid;
+}
+.gitem:last-child{border-bottom:none;}
+.gitem h4{
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  font-size:10.4pt;
+  color:var(--ink);
+  margin:0 0 3px;
+  display:flex;align-items:center;gap:9px;
+}
+.gitem h4::before{
+  content:"";
+  flex:0 0 auto;
+  width:7px;height:7px;
+  background:var(--gold);
+  transform:rotate(45deg);
+}
+.gitem p{margin:0 0 5px;font-size:9.6pt;color:var(--muted);line-height:1.54;}
+.gitem p:last-child{margin-bottom:0;}
+
+/* pricing */
+.tier{
+  border:1px solid var(--line-2);
+  border-radius:5px;
+  overflow:hidden;
+  margin-bottom:16px;
+  break-inside:avoid;
+  background:#fff;
+}
+.tier.rec{
+  border:1.6px solid var(--gold);
+  box-shadow:0 1px 0 rgba(179,135,63,0.15);
+}
+.tier-head{
+  display:flex;
+  align-items:stretch;
+  background:var(--navy);
+  color:#f2ecdd;
+}
+.tier.rec .tier-head{background:linear-gradient(120deg,#1d3054 0%,#24406e 100%);}
+.tier-head .th-left{
+  padding:15px 20px 15px;
+  flex:1;
+}
+.tier-head .th-right{
+  padding:15px 20px;
+  text-align:right;
+  border-left:1px solid rgba(255,255,255,0.14);
+  min-width:1.9in;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.tier .tname{
+  font-family:'Source Serif Disp',serif;
+  font-size:17pt;
+  font-weight:600;
+  letter-spacing:0.01em;
+  color:#fff;
+  display:flex;align-items:center;gap:12px;
+}
+.tier .ttag{
+  font-family:'Source Serif Txt',serif;
+  font-style:italic;
+  font-size:10.4pt;
+  color:#d3c6a8;
+  margin-top:3px;
+}
+.rec-badge{
+  font-family:'Inter',sans-serif;
+  font-style:normal;
+  font-size:7.4pt;
+  font-weight:700;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  background:var(--gold);
+  color:#20150a;
+  padding:3px 9px;
+  border-radius:20px;
+  vertical-align:middle;
+}
+.tier .price{
+  font-family:'Source Serif Disp',serif;
+  font-size:22pt;
+  font-weight:600;
+  color:#fff;
+  line-height:1;
+}
+.tier .dur{
+  font-size:8.6pt;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:#c7b89b;
+  margin-top:7px;
+}
+.tier-body{padding:14px 20px 15px;}
+.incl-label{
+  font-size:8.2pt;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  font-weight:600;
+  margin-bottom:8px;
+}
+ul.checks{
+  list-style:none;
+  margin:0;padding:0;
+  columns:2;
+  column-gap:26px;
+}
+ul.checks li{
+  position:relative;
+  padding-left:18px;
+  margin-bottom:6px;
+  font-size:9.3pt;
+  line-height:1.42;
+  color:var(--text);
+  break-inside:avoid;
+}
+ul.checks li::before{
+  content:"";
+  position:absolute;
+  left:0;top:5px;
+  width:9px;height:5px;
+  border-left:1.6px solid var(--gold);
+  border-bottom:1.6px solid var(--gold);
+  transform:rotate(-45deg);
+}
+ul.checks.single{columns:1;}
+.tier-note{
+  margin-top:11px;
+  padding-top:10px;
+  border-top:1px solid var(--line);
+  font-size:9.3pt;
+  color:var(--muted);
+}
+.tier-note b{color:var(--navy);font-weight:600;}
+
+.catalyst{
+  border:1px dashed var(--line-2);
+  border-radius:5px;
+  padding:15px 20px;
+  background:var(--ivory);
+  break-inside:avoid;
+}
+.catalyst .ch{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  margin-bottom:6px;
+}
+.catalyst .ch .cn{
+  font-family:'Source Serif Disp',serif;
+  font-size:14pt;font-weight:600;color:var(--navy);
+}
+.catalyst .ch .cp{
+  font-family:'Source Serif Disp',serif;
+  font-size:12pt;color:var(--gold-deep);font-weight:600;
+}
+.catalyst p{font-size:9.5pt;color:var(--muted);margin:0;}
+
+/* addon table */
+table.addons{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:4px;
+  font-size:9.4pt;
+}
+table.addons thead th{
+  text-align:left;
+  font-size:7.8pt;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--muted-2);
+  font-weight:600;
+  padding:0 12px 8px;
+  border-bottom:1.4px solid var(--navy);
+}
+table.addons thead th.r{text-align:right;}
+table.addons td{
+  padding:9px 12px;
+  border-bottom:1px solid var(--line);
+  vertical-align:top;
+}
+table.addons td.name{font-weight:600;color:var(--ink);width:34%;}
+table.addons td.why{color:var(--muted);width:42%;}
+table.addons td.inv{
+  text-align:right;
+  font-family:'Source Serif Disp',serif;
+  font-weight:600;
+  color:var(--navy);
+  white-space:nowrap;
+  width:24%;
+}
+table.addons tr{break-inside:avoid;}
+
+/* funding + terms two-up handled inline */
+.mini-h{
+  font-family:'Source Serif Disp',serif;
+  font-size:11.5pt;color:var(--navy);font-weight:600;
+  margin:0 0 6px;
+}
+
+ul.terms{
+  list-style:none;margin:6px 0 0;padding:0;
+}
+ul.terms li{
+  position:relative;padding-left:20px;margin-bottom:8px;
+  font-size:9.7pt;color:var(--text);line-height:1.5;
+}
+ul.terms li::before{
+  content:"";position:absolute;left:0;top:6px;
+  width:8px;height:8px;background:var(--gold);transform:rotate(45deg);
+}
+
+/* next step / signature */
+.close{
+  margin-top:22pt;
+  background:linear-gradient(160deg,#182842 0%,#12203a 100%);
+  color:#eee4d1;
+  border-radius:6px;
+  padding:24px 28px 22px;
+  break-inside:avoid;
+}
+.close .eyebrow-cover{color:var(--gold);margin-bottom:12px;}
+.close h3{
+  font-family:'Source Serif Disp',serif;
+  font-weight:600;font-size:19pt;color:#faf5ea;margin:0 0 10px;line-height:1.16;
+}
+.close p{color:#cfc3a8;font-size:10.2pt;margin:0 0 8px;max-width:5.6in;}
+.sign{
+  margin-top:18px;padding-top:16px;
+  border-top:1px solid rgba(197,166,110,0.3);
+  display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
+}
+.sign .who .nm{
+  font-family:'Source Serif Disp',serif;font-size:14pt;color:#f6efe1;font-weight:600;
+}
+.sign .who .ro{font-size:9pt;color:#b8ac90;letter-spacing:0.04em;margin-top:2px;}
+.sign .contact{font-size:8.7pt;color:#c7bb9d;text-align:right;line-height:1.7;}
+.sign .contact a{color:#e3d6b8;text-decoration:none;}
+
+.valid{
+  text-align:center;
+  font-size:8.2pt;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--muted-2);
+  margin-top:16px;
+}
+
+.no-break{break-inside:avoid;}
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="cover">
+  <div class="cover-frame"></div>
+  <div class="cover-inner">
+    <div>
+      <div class="wordmark">YMU<span class="ai">ai</span></div>
+      <div class="tagline">We do not sell AI. We build capacity.</div>
+    </div>
+
+    <div class="cover-mid">
+      <div class="eyebrow-cover">Capacity &amp; Systems Proposal</div>
+      <h1 class="cover-title">AI Capacity<br>and Systems<br>Proposal</h1>
+      <div class="cover-rule"></div>
+      <div class="cover-prepared">
+        Prepared for
+        <span class="org">Refugee Assistance Alliance</span>
+      </div>
+    </div>
+
+    <div class="cover-foot">
+      <div class="att">Attention: <b>Kristen Bloom</b>, President &amp; Founder</div>
+      <div>AUGUST 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 WHERE THINGS STAND ============ -->
+<section class="section">
+  <div class="sec-head">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title">Where Things Stand</h2>
+    <span class="sec-kicker">The situation</span>
+  </div>
+
+  <p class="lead">Refugee Assistance Alliance runs five program areas across economic support, emotional support, education, employment, and English instruction. Ninety-six percent of the households you serve now have at least one person employed. Sixty-six percent of your adult clients are enrolled in English classes. Those numbers are the case you make to funders, and every one of them has to be assembled by hand from information that lives outside your system.</p>
+
+  <div class="stat-row">
+    <div class="stat"><div class="n">96%</div><div class="l">of households you serve now have at least one person employed</div></div>
+    <div class="stat"><div class="n">66%</div><div class="l">of your adult clients are enrolled in English classes</div></div>
+    <div class="stat"><div class="n">~50</div><div class="l">questionnaires and surveys that are not integrated</div></div>
+  </div>
+
+  <p>You told me you have roughly fifty questionnaires and surveys that are not integrated. That is not a filing problem. It is the reason proving your impact costs your team days it does not have, at exactly the moment resettlement funding has been removed, food assistance has been cut, and healthcare access is set to end in the fall.</p>
+
+  <div class="callout">
+    <p>Meanwhile your team is about a week into Claude, with no shared way of working in it, no policy governing what goes into it, and refugee family information sitting in the systems it would touch. <strong>The appetite is there. The structure is not.</strong></p>
+  </div>
+</section>
+
+<!-- ============ 02 HOW WE WORK ============ -->
+<section class="section">
+  <div class="sec-head">
+    <span class="sec-num">02</span>
+    <h2 class="sec-title">How We Work</h2>
+    <span class="sec-kicker">Our method</span>
+  </div>
+
+  <p>Every YMUai engagement is grounded in our <strong>People-Centered Intelligence Framework</strong>, which treats your team's knowledge as the asset and technology as the amplifier. Four pillars shape the work:</p>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pidx">I</div>
+      <h4>Contextual Training</h4>
+      <p>AI literacy in your language, your workflows, and your values. Fluency rather than dependency.</p>
+    </div>
+    <div class="pillar">
+      <div class="pidx">II</div>
+      <h4>Values-Aligned Guardrails</h4>
+      <p>Ethical boundaries that protect your mission, your constituents, and your reputation.</p>
+    </div>
+    <div class="pillar">
+      <div class="pidx">III</div>
+      <h4>Workflow Embedding</h4>
+      <p>Intelligence where the work actually happens, not alongside it.</p>
+    </div>
+    <div class="pillar">
+      <div class="pidx">IV</div>
+      <h4>Participatory Feedback</h4>
+      <p>Your team shapes the design, the testing, and the governance.</p>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:15px;">
+    <p>All work runs on our <strong>closed-network security model</strong>. Your data, your community narratives, and your clients' information stay protected throughout. For an organization holding records on refugee families, this is not a feature we added. It is the reason we built the practice this way.</p>
+  </div>
+</section>
+
+<!-- ============ 03 WHO DELIVERS ============ -->
+<section class="section">
+  <div class="sec-head">
+    <span class="sec-num">03</span>
+    <h2 class="sec-title">Who Delivers This Work</h2>
+    <span class="sec-kicker">The team</span>
+  </div>
+
+  <p>YMUai operates as a consortium of independent leaders who chose to build together across education, philanthropy, sports, life sciences, and global systems. Foundation engagements are led directly by the Founder and Principal. Builder engagements bring the full team.</p>
+
+  <div class="team">
+    <div class="member">
+      <div class="badge">FP</div>
+      <div class="body">
+        <h4>Founder &amp; Principal</h4>
+        <p>Leads strategy, governance, and client partnership. Nearly two decades of executive leadership across life sciences, professional sports, and philanthropy, including senior roles at the Pittsburgh Penguins and Pittsburgh Life Sciences Greenhouse. Currently AI Expert in Residence at the African American Chamber of Commerce of Western Pennsylvania, and a speaker on ethical AI implementation in Munich and Casablanca this year.</p>
+      </div>
+    </div>
+    <div class="member">
+      <div class="badge">LE</div>
+      <div class="body">
+        <h4>Senior Advisor for Learning &amp; Evaluation, Ed.D.</h4>
+        <p>Designs the evaluation and learning methodology behind every Builder engagement, which means the work is measured against whether your team's capacity actually changed, not whether a tool was installed. For an organization that reports outcomes to funders, this is the difference between saying you adopted AI and showing what it did.</p>
+      </div>
+    </div>
+    <div class="member">
+      <div class="badge">PR</div>
+      <div class="body">
+        <h4>Program &amp; Research Support</h4>
+        <p>A Navy veteran with nine years of federal program management at the U.S. Department of State, currently completing a master's degree in AI Management at Georgetown University. That background is directly relevant to your situation. The federal programs and funding structures shaping refugee services are the environment this work came from, which is useful context as you navigate what is being cut and what remains.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:13px;">
+    <p>Engagements led by one person carry a single point of failure. Bringing evaluation methodology and research support alongside the strategy work is why Builder engagements hold up after the consultant leaves. <em>Full biographies are available on request.</em></p>
+  </div>
+</section>
+
+<!-- ============ 04 GLOSSARY ============ -->
+<section class="section">
+  <div class="sec-head">
+    <span class="sec-num">04</span>
+    <h2 class="sec-title">What Each of These Actually Is</h2>
+    <span class="sec-kicker">In plain terms</span>
+  </div>
+
+  <p>Some of these terms are new to most organizations. Here is what they mean for your team.</p>
+
+  <div class="gloss">
+    <div class="gitem">
+      <h4>AI use policy &amp; values-aligned guardrails</h4>
+      <p>A short, readable document telling your staff and volunteers what they can and cannot do with AI. Which tools are approved, what client information never goes into one, and what to do when someone is unsure. Your volunteer model means people outside your payroll touch client information, which raises the stakes. It also gives you something concrete to point to when a board member or a funder asks how you are handling this.</p>
+    </div>
+    <div class="gitem">
+      <h4>Salesforce platform diagnostic</h4>
+      <p>Salesforce runs an older nonprofit setup and a newer one. Which you are on determines which AI features are available to you at all. This is a one-time check that prevents you from paying for something your system cannot support.</p>
+    </div>
+    <div class="gitem">
+      <h4>Custom skills &amp; AI assistants</h4>
+      <p>A skill is a set of instructions built once and reused by everyone, so the tool handles a task the same way every time no matter who asks. An assistant is a larger version of the same idea, built around a specific workflow and trained on your own documents.</p>
+      <p>For your team that might mean turning intake notes into a standard client summary across all five programs, compiling English class enrollment and employment outcomes into the format your impact report needs, or drafting a funder progress report from your program data. Right now, if four people ask for the same thing four different ways, they get four different answers.</p>
+    </div>
+    <div class="gitem">
+      <h4>Contextual AI literacy training</h4>
+      <p>Live working sessions, not lectures. Your team brings actual work, learns where these tools are strong and where they fail, and leaves with habits for verifying output. This is where the policy stops being a document and becomes practice.</p>
+    </div>
+    <div class="gitem">
+      <h4>Systems map &amp; integration design</h4>
+      <p>You mentioned three systems, and they do not all connect the same way. Your online giving platform is the easy one. Platforms in that category typically build and maintain their own Salesforce connector, it works with either version of Salesforce for Nonprofits, and the cost is usually modest. If that connection is not switched on today, turning it on is a setup task rather than a project, and I will tell you so plainly rather than charge you to find out.</p>
+      <p>Your donor management system is a different situation. The platforms built specifically for small nonprofits are generally positioned as alternatives to Salesforce rather than partners to it, which means most do not publish a native Salesforce integration at all. Where that holds, connecting the two means building something custom, and that is real work with real cost. Confirming exactly what yours supports is part of the systems map.</p>
+      <p>That raises a question worth settling before anyone builds anything: whether two systems should both hold constituent records, or whether one becomes your source of truth. That is a strategy decision, and getting it wrong is expensive in either direction.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 INVESTMENT ============ -->
+<section class="section">
+  <div class="sec-head">
+    <span class="sec-num">05</span>
+    <h2 class="sec-title">Investment</h2>
+    <span class="sec-kicker">Choose your starting point</span>
+  </div>
+
+  <!-- Foundation -->
+  <div class="tier">
+    <div class="tier-head">
+      <div class="th-left">
+        <div class="tname">Foundation</div>
+        <div class="ttag">Start with clarity, not chaos.</div>
+      </div>
+      <div class="th-right">
+        <div class="price">$8,500</div>
+        <div class="dur">3 to 4 weeks</div>
+      </div>
+    </div>
+    <div class="tier-body">
+      <div class="incl-label">What is included</div>
+      <ul class="checks">
+        <li>PCI-grounded AI readiness assessment across your team and systems</li>
+        <li>A written values-aligned AI roadmap, yours to keep regardless of what you decide next</li>
+        <li>Half-day strategy workshop, remote or in person</li>
+        <li>Contextual AI literacy training for one team</li>
+        <li>Prioritized use-case identification across your five program areas</li>
+        <li>Quick-win versus longer-term buildout analysis, so you know what is cheap and what is not</li>
+        <li>Data and security risk overview, written for an organization holding refugee family records</li>
+        <li>A systems map showing how Salesforce, your donor management system, and your online giving platform currently relate, where data is duplicated, and where it stops moving</li>
+        <li>Salesforce platform diagnostic and a check on whether your giving platform data is reaching Salesforce today</li>
+        <li>Thirty days of post-delivery advisory support</li>
+        <li>Led directly by the Founder and Principal</li>
+      </ul>
+      <div class="tier-note"><b>Why this tier exists.</b> Foundation is a real diagnostic, not a thinner version of the full service. Every element is grounded in the People-Centered Intelligence methodology, which means your context, your values, and your capacity shape the recommendations. What it does not do is build anything or connect anything.</div>
+    </div>
+  </div>
+
+  <!-- Builder -->
+  <div class="tier rec">
+    <div class="tier-head">
+      <div class="th-left">
+        <div class="tname">Builder <span class="rec-badge">Recommended</span></div>
+        <div class="ttag">Your first AI system, built right.</div>
+      </div>
+      <div class="th-right">
+        <div class="price">$22,000</div>
+        <div class="dur">10 to 12 weeks</div>
+      </div>
+    </div>
+    <div class="tier-body">
+      <div class="incl-label">Everything in Foundation, plus</div>
+      <ul class="checks">
+        <li>One custom AI assistant scoped through the PCI methodology, built around your highest-cost recurring workflow</li>
+        <li>Closed-network, values-aligned document training so the assistant knows your programs, your language, and your reporting formats</li>
+        <li>Enterprise-grade security deployment</li>
+        <li>Contextual staff onboarding and adoption support across your eleven-person team, with a separate session for your four directors</li>
+        <li>Integration with one to two existing tools, which for RAA means the Salesforce work and your survey and questionnaire pipeline</li>
+        <li>Ninety days of post-launch support and an iteration cycle</li>
+        <li>Monthly check-in calls throughout the support window</li>
+        <li>Delivered by the full three-person team rather than a single consultant, covering strategy and governance, evaluation methodology, and program and research support</li>
+      </ul>
+      <div class="tier-note"><b>Why this is the recommendation.</b> Policy without a working system tends to sit in a drawer. Your team is already using these tools daily, so the risk and the opportunity are both live right now. The assistant is where the time comes back. If compiling your impact numbers currently takes days of staff time each reporting cycle, and it almost certainly does given where that data lives, that is the workflow to build around. The same system that shortens funder reporting also shortens intake. <b>Builder is scoped from $18,000</b> depending on data complexity, integration requirements, and number of users. The figure above reflects a well-defined single use case for a team your size.</div>
+    </div>
+  </div>
+
+  <!-- Catalyst -->
+  <div class="catalyst">
+    <div class="ch">
+      <div class="cn">Looking further out: Catalyst</div>
+      <div class="cp">from $55,000</div>
+    </div>
+    <p>Catalyst is our full engagement: org-wide AI architecture, agentic systems, complete platform integrations, quarterly strategic reviews, an annual AI audit, and board reporting support. It begins at $55,000 and is built for organizations operating across many departments with sustained complexity. I am not proposing it here. It is more than Refugee Assistance Alliance needs today, and more than makes sense at your current stage. I mention it so you know the path exists if your systems and funding grow into it.</p>
+  </div>
+</section>
+
+<!-- ============ 06 ADD-ONS ============ -->
+<section class="section">
+  <div class="sec-head">
+    <span class="sec-num">06</span>
+    <h2 class="sec-title">Add-Ons Worth Considering</h2>
+    <span class="sec-kicker">Attach to any tier</span>
+  </div>
+
+  <p>These can be attached to either tier or purchased on their own.</p>
+
+  <table class="addons">
+    <thead>
+      <tr><th>Add-on</th><th>Why it may fit RAA</th><th class="r">Investment</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="name">Board-Level AI Governance Workshop</td>
+        <td class="why">Your board is already pushing on AI</td>
+        <td class="inv">$1,800&ndash;$3,000</td>
+      </tr>
+      <tr>
+        <td class="name">Extended Contextual Training Program</td>
+        <td class="why">Multi-session literacy for staff and volunteers</td>
+        <td class="inv">$2,500&ndash;$5,000</td>
+      </tr>
+      <tr>
+        <td class="name">Data Audit &amp; Preparation</td>
+        <td class="why">Quality review before anything is built on your data</td>
+        <td class="inv">$3,000&ndash;$7,000</td>
+      </tr>
+      <tr>
+        <td class="name">Ongoing PCI Support Retainer</td>
+        <td class="why">Monthly check-in and quarterly tune-up after launch</td>
+        <td class="inv">$500&ndash;$1,200/mo</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:11px;font-size:9.5pt;color:var(--muted);">If your needs expand beyond a tier, we will have an honest conversation about whether an upgrade makes more sense than stacking add-ons.</p>
+</section>
+
+<!-- ============ 07 FUNDING ============ -->
+<section class="section">
+  <div class="sec-head">
+    <span class="sec-num">07</span>
+    <h2 class="sec-title">A Note on Funding This</h2>
+    <span class="sec-kicker">Paying for the work</span>
+  </div>
+
+  <p>You mentioned federal grants ending this year that account for roughly a third of your budget. That is exactly the pressure that makes this work harder to fund and more valuable to have.</p>
+  <p>Capacity-building and technology grants are an active funding category, and this work fits them well because it <strong>strengthens the organization rather than covering operating costs</strong>. You already hold relationships with funders who support organizational capacity. I am glad to help you frame this for a specific funder, and funder-sponsored engagements are welcome.</p>
+  <div class="callout">
+    <p>Separately, if your Salesforce licenses came through the Power of Us donation program, the retail value can typically be claimed as an <strong>in-kind contribution</strong> for grant and matching purposes. Worth confirming with Salesforce, since it can strengthen a match at no cost to you.</p>
+  </div>
+</section>
+
+<!-- ============ 08 HOW WE WOULD WORK ============ -->
+<section class="section">
+  <div class="sec-head">
+    <span class="sec-num">08</span>
+    <h2 class="sec-title">How We Would Work</h2>
+    <span class="sec-kicker">Terms</span>
+  </div>
+  <ul class="terms">
+    <li><strong>Payment in two installments:</strong> half at signing, half at completion.</li>
+    <li>Sessions delivered remotely unless you prefer otherwise.</li>
+    <li>Every deliverable is yours to keep and reuse, with no ongoing license or dependency on us.</li>
+    <li>Your team participates in scoping, testing, and feedback throughout. That is the methodology, not a courtesy.</li>
+  </ul>
+
+  <!-- Close -->
+  <div class="close">
+    <div class="eyebrow-cover">Next Step</div>
+    <h3>Tell me which tier fits and I will send a short agreement.</h3>
+    <p>I can begin within two weeks of signing. If neither lands where you need it, say so plainly and we will shape something that does. I would rather find the right scope than lose the chance to help.</p>
+    <div class="sign">
+      <div class="who">
+        <div class="nm">Delvina Morrow</div>
+        <div class="ro">Founder &amp; Principal, YMUai</div>
+      </div>
+      <div class="contact">
+        <a href="mailto:dmorrow@delvinamorrowllc.com">dmorrow@delvinamorrowllc.com</a><br>
+        646-496-3628 &nbsp;&middot;&nbsp; YMUai.com
+      </div>
+    </div>
+  </div>
+  <div class="valid">Pricing valid for 60 days from the date of this proposal</div>
+</section>
+
+</body>
+</html>
