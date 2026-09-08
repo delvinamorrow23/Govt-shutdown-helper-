@@ -74,6 +74,35 @@ public/audio/                        drop-in narration slot
 Import the repo at vercel.com/new (Next.js is auto-detected). Add
 `ANTHROPIC_API_KEY` (and optionally `ANTHROPIC_MODEL`) as environment variables.
 The proxy runs as a serverless function; the key is never shipped to the client.
+It auto-redeploys on every push, so the Vercel URL is your shareable live preview.
+
+## Connect this to your own GitHub repo
+
+To move this code into a fresh, empty repo (e.g. `your-account/GLEEA`), run these
+on your machine — signed in as the account that **owns** the target repo:
+
+```bash
+# 1. Get the code
+git clone https://github.com/delvinamorrow23/Govt-shutdown-helper-.git gleea
+cd gleea
+git checkout claude/gleea-beta-rebuild-3az4I
+
+# 2. Point a remote at your empty repo and push it in as main
+git remote add gleea https://github.com/<your-account>/GLEEA.git
+git push gleea claude/gleea-beta-rebuild-3az4I:main
+```
+
+Prefer a **clean history** (drop the earlier Shutdown-Helper commits so GLEEA
+starts as a single commit)? Replace step 2 with:
+
+```bash
+git checkout --orphan gleea-main
+git commit -m "Gleea MVP beta"
+git remote add gleea https://github.com/<your-account>/GLEEA.git
+git push gleea gleea-main:main
+```
+
+Then import the new repo at vercel.com/new for a live URL.
 
 ## Scope
 
