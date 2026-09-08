@@ -7,38 +7,37 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Gleea palette: warm storybook night sky with pink accents.
-        night: {
-          900: "#0e1030",
-          800: "#161a47",
-          700: "#222a6b",
+        // Canonical Gleea palette: twilight ground, gold accent, parchment cards.
+        twilight: {
+          900: "#171233",
+          800: "#241a4d",
+          700: "#332963",
         },
-        gleea: {
-          pink: "#FF7AA8",
-          rose: "#FFB3CE",
-          gold: "#FFD479",
-          mint: "#7AD0C0",
-          lilac: "#C9A7FF",
+        gold: {
+          DEFAULT: "#D4AF37",
+          soft: "#E6C868",
+          deep: "#B8942B",
+        },
+        parchment: {
+          DEFAULT: "#F5ECD8",
+          shade: "#EADFC4",
+          ink: "#3B3218",
         },
       },
       fontFamily: {
         rounded: ['"Baloo 2"', '"Nunito"', "ui-rounded", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        glow: "0 0 40px rgba(255, 122, 168, 0.35)",
+        glow: "0 0 34px rgba(212, 175, 55, 0.30)",
+        card: "0 10px 30px rgba(0,0,0,0.28)",
       },
       keyframes: {
-        twinkle: {
-          "0%, 100%": { opacity: "0.35" },
-          "50%": { opacity: "1" },
-        },
         floaty: {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-8px)" },
         },
       },
       animation: {
-        twinkle: "twinkle 3s ease-in-out infinite",
         floaty: "floaty 4s ease-in-out infinite",
       },
     },

@@ -3,22 +3,30 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button, Card } from './ui';
-import type { GardenElement } from '../lib/types';
+import { CASEL_LABEL } from '../lib/worlds';
+import type { Casel, FlowerPetal } from '../lib/types';
 
-// The kindness garden. One element grows each time a family completes SHINE.
-// (Badges, collectibles, and the global kindness map are deferred; the data
-// model supports them but their UI is not built yet.)
+// The Kindness Garden. Each completed mission grows one bloom, tinted by the
+// CASEL competency it practiced — together they form the child's Kindness
+// Flower (a gentle CASEL profile). No streaks-as-pressure, no "0 missions"
+// empty state, no competition.
 export function Garden({
-  elements,
+  petals,
   childName,
   justGrew,
   onReplay,
 }: {
-  elements: GardenElement[];
+  petals: FlowerPetal[];
   childName: string;
   justGrew: boolean;
   onReplay: () => void;
 }) {
+  // Tally blooms per competency for the little "flower" summary.
+  const byCasel = petals.reduce<Record<string, number>>((acc, p) => {
+    acc[p.casel] = (acc[p.casel] ?? 0) + 1;
+    return acc;
+  }, {});
+
   return (
     <div className="mx-auto max-w-2xl px-5 py-8">
       {justGrew && (
@@ -29,45 +37,57 @@ export function Garden({
           className="mb-6 text-center"
         >
           <div className="text-6xl">🎉</div>
-          <h2 className="mt-2 text-3xl font-extrabold text-white">
+          <h2 className="mt-2 text-3xl font-extrabold text-parchment">
             Your garden grew, {childName}!
           </h2>
-          <p className="mt-1 text-gleea-rose">Kindness makes things bloom.</p>
+          <p className="mt-1 text-gold-soft">Kindness makes things bloom.</p>
         </motion.div>
       )}
 
       <Card>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="font-rounded text-2xl font-bold text-white">Kindness Garden</h3>
-          <span className="rounded-full bg-white/10 px-3 py-1 text-sm font-bold text-gleea-gold">
-            {elements.length} grown
+          <h3 className="font-rounded text-2xl font-bold">Kindness Garden</h3>
+          <span className="rounded-full bg-gold/20 px-3 py-1 text-sm font-bold text-gold-deep">
+            {petals.length} {petals.length === 1 ? 'bloom' : 'blooms'}
           </span>
         </div>
 
-        {elements.length === 0 ? (
-          <p className="py-8 text-center text-white/60">
-            Your garden is waiting. Finish a Gleea Loop to grow your first bloom! 🌱
+        {petals.length === 0 ? (
+          <p className="py-8 text-center text-parchment-ink/60">
+            Ready for your first adventure? Finish a Gleea Loop to grow your first bloom! 🌱
           </p>
         ) : (
-          <div className="grid grid-cols-4 gap-3 sm:grid-cols-6">
-            {elements.map((el, i) => (
-              <motion.div
-                key={el.id}
-                initial={i === elements.length - 1 && justGrew ? { scale: 0, y: 20 } : false}
-                animate={{ scale: 1, y: 0 }}
-                transition={{ type: 'spring', stiffness: 200, damping: 14 }}
-                title={`${el.label} · ${new Date(el.earnedAt).toLocaleDateString()}`}
-                className="grid aspect-square place-items-center rounded-2xl bg-gradient-to-b
-                           from-white/10 to-white/[0.03] text-3xl"
-              >
-                {el.emoji}
-              </motion.div>
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-4 gap-3 sm:grid-cols-6">
+              {petals.map((p, i) => (
+                <motion.div
+                  key={p.id}
+                  initial={i === petals.length - 1 && justGrew ? { scale: 0, y: 20 } : false}
+                  animate={{ scale: 1, y: 0 }}
+                  transition={{ type: 'spring', stiffness: 200, damping: 14 }}
+                  title={`${CASEL_LABEL[p.casel as Casel]} · ${new Date(p.earnedAt).toLocaleDateString()}`}
+                  className="grid aspect-square place-items-center rounded-2xl bg-gradient-to-b
+                             from-gold/20 to-gold/[0.05] text-3xl"
+                >
+                  {p.emoji}
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              {Object.entries(byCasel).map(([casel, n]) => (
+                <span
+                  key={casel}
+                  className="rounded-full border border-parchment-shade bg-parchment-shade/40 px-3 py-1 text-xs font-semibold"
+                >
+                  {CASEL_LABEL[casel as Casel]} · {n}
+                </span>
+              ))}
+            </div>
+          </>
         )}
 
-        {/* Soft ground line for a storybook garden feel. */}
-        <div className="mt-6 h-3 rounded-full bg-gradient-to-r from-gleea-mint/40 via-gleea-mint/20 to-gleea-mint/40" />
+        <div className="mt-6 h-3 rounded-full bg-gradient-to-r from-gold/40 via-gold/20 to-gold/40" />
       </Card>
 
       <div className="mt-8 flex justify-center">

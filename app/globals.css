@@ -15,12 +15,12 @@ body {
 
 body {
   font-family: 'Nunito', ui-sans-serif, system-ui, sans-serif;
-  /* Warm, magical night-sky gradient. */
+  /* Canonical twilight gradient — clean, no stars or sparkles in the background. */
   background:
-    radial-gradient(1200px 600px at 50% -10%, #2a2f74 0%, rgba(42, 47, 116, 0) 60%),
-    linear-gradient(180deg, #161a47 0%, #0e1030 100%);
+    radial-gradient(1100px 620px at 50% -8%, #3a2d70 0%, rgba(58, 45, 112, 0) 62%),
+    linear-gradient(180deg, #241a4d 0%, #171233 100%);
   background-attachment: fixed;
-  color: #fdf2f8;
+  color: #f6efe0;
 }
 
 h1, h2, h3, .font-rounded {

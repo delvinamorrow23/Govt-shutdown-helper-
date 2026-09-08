@@ -1,136 +1,118 @@
-// Core data model for the Gleea MVP.
+// Core data model for the Gleea MVP, aligned to the canonical Gleea product
+// truth (six Animal Guides, five Worlds, three age bands, READ→DO→SHINE) and to
+// the live Base44 content schema (Mission / Badge entities).
 //
-// The schema intentionally carries fields for deferred features (badges,
-// collectibles, the global kindness map, the full story library, the archived
-// GIVE/LEAD tier, and a future text-to-speech pipeline) so the architecture
-// supports them without their UI being built yet.
+// Content principle (non-negotiable): AI is limited to NAME personalization
+// only. READ / DO / SHINE content is authored, never AI-generated. Story text
+// therefore carries {{CHILD_NAME}} / {{GUIDE_NAME}} tokens substituted locally.
 
-export type AgeBand = '3-4' | '5-6';
+// Three developmental bands. The MVP UI exposes Seedling + Sprout (ages 3–6);
+// Bloomer (7–8) is modeled but not surfaced yet.
+export type AgeBand = 'seedling' | 'sprout' | 'bloomer';
 
-// The Kind Eyes / Kind Heart / Kind Hands SEL scaffold for ages 3-6.
-export type KindSense = 'eyes' | 'heart' | 'hands';
+// Invisible to the child — scaffolds difficulty, never shown as "levels".
+export type Difficulty = 'gentle' | 'growing' | 'stretching';
 
-// CASEL's five social-emotional competencies. Each Animal Guide maps to one.
-export type CaselCompetency =
-  | 'self-awareness'
-  | 'self-management'
-  | 'social-awareness'
-  | 'relationship-skills'
-  | 'responsible-decision-making';
+// CASEL competencies (Base44 enum, including Gleea's added "generosity").
+export type Casel =
+  | 'self_awareness'
+  | 'self_management'
+  | 'social_awareness'
+  | 'relationship_skills'
+  | 'responsible_decision_making'
+  | 'generosity';
 
-// The canonical three-step Gleea Loop. GIVE/LEAD are intentionally absent here
-// (archived in lib/archive/giveLeadArchive.ts for a possible later tier).
+// The canonical three-step loop. No GIVE/LEAD (archived long ago; see
+// lib/archive/giveLeadArchive.ts).
 export type LoopStep = 'read' | 'do' | 'shine';
 
+// The six Animal Guides are companions; the child is always the hero.
 export interface Guide {
   id: string;
-  name: string;        // e.g. "Joyful Otter"
-  species: string;     // e.g. "otter"
+  name: string;      // e.g. "Joyful Otter"
+  species: string;   // bear | dog | deer | otter | skunk | squirrel
   emoji: string;
-  competency: CaselCompetency;
-  kindSense: KindSense;
-  accent: string;      // tailwind-friendly hex for the guide's color
-  blurb: string;       // child-facing one-liner
-  persona: string;     // voice notes used when prompting the AI
+  // Guide → CASEL mapping. INFERRED for the MVP; confirm with the content team.
+  competency: Casel;
+  homeWorldId: string;
+  accent: string;    // hex
+  blurb: string;     // child-facing one-liner
+  persona: string;   // voice notes (used only for name-safe phrasing, not story gen)
 }
 
-export interface KindnessValue {
+export interface World {
   id: string;
-  label: string;       // e.g. "Including others"
+  name: string;
   emoji: string;
-  description: string; // parent-facing explanation
+  order: number;         // journey order (1..5)
+  competencies: Casel[]; // canonical World → CASEL mapping
+  blurb: string;
+  locked: boolean;       // locked worlds show "Up next!", never "Locked"
 }
 
-// A single page of the story. Text is provided per age band so the static
-// fallback (and the AI's grounding) is age-appropriate.
-export interface StoryPage {
+// A mission mirrors the Base44 `Mission` entity. Story text is STATIC and
+// tokenized; per-band variants scaffold reading level for the MVP.
+export interface Mission {
   id: string;
-  emoji: string;
-  text: Record<AgeBand, string>;
-}
-
-export interface StoryArc {
-  id: string;
+  missionNumber: number;
   title: string;
+  worldId: string;
   guideId: string;
-  defaultValueId: string;
-  // READ content, per age band.
-  pages: StoryPage[];
-  // DO: the real-world kindness mission, per age band.
-  mission: Record<AgeBand, string>;
-  // SHINE: family reflection prompts (shared moment), per age band.
-  shinePrompts: Record<AgeBand, string[]>;
-  // One human-recorded narration file for the READ step (Delvina supplies it).
-  audioSrc: string;
-  // Deferred: TTS pipeline would populate per-page audio later.
-  ttsEnabled?: boolean;
+  casel: Casel;
+  agePrimary: AgeBand;
+  read: Record<AgeBand, string>;          // READ — tokenized static story text
+  doInstruction: Record<AgeBand, string>; // DO — real-world observable action only
+  shinePrompts: Record<AgeBand, string[]>;// SHINE — reflection prompts
+  xpValue: number;
+  audioSrc: string;                        // one human-recorded narration file
+  deck: 'legacy' | 'casel_v2';             // casel_v2 = source of truth
+  archived: boolean;
+  ttsEnabled?: boolean;                    // deferred TTS pipeline
 }
 
-export interface GardenElement {
-  id: string;
-  kind: 'flower' | 'star' | 'tree' | 'sprout';
-  emoji: string;
-  label: string;
-  earnedAt: string;    // ISO timestamp
-  storyId: string;
-  valueId: string;
-}
+// SHINE sentiment emojis (Base44 `overall_emoji` enum).
+export type ChildFeedback = '😊' | '😢' | '😐' | '😕' | '😍';
 
-// PCI Participatory Feedback: every AI generation is logged so the parent can
-// review, flag, and adjust it, and so the child's emoji feedback can tune
-// future stories.
-export interface AIGeneration {
+// A completed SHINE reflection.
+export interface Reflection {
   id: string;
+  missionId: string;
   createdAt: string;
-  type: 'story' | 'mission';
-  // PCI Contextual Training: the exact context handed to the model.
-  context: AIContext;
-  output: string;
-  source: 'claude' | 'fallback';
-  flagged: boolean;
-  parentNote?: string;
-  childFeedback?: ChildFeedback;
+  emoji: ChildFeedback | null;
+  casel: Casel;
 }
 
-export type ChildFeedback = 'love' | 'ok' | 'meh';
+// A petal on the child's Kindness Flower (CASEL profile), earned per mission.
+export interface FlowerPetal {
+  id: string;
+  casel: Casel;
+  emoji: string;
+  earnedAt: string;
+  missionId: string;
+  worldId: string;
+}
 
-// PCI Workflow Embedding: parent-authored custom missions require approval
-// before a child ever sees them.
+// Parent-authored custom mission — requires parent approval before a child
+// sees it (Workflow Embedding).
 export interface CustomMission {
   id: string;
   createdAt: string;
   text: string;
   status: 'pending' | 'approved' | 'declined';
-  context: AIContext;
-}
-
-// The context object that travels to the AI proxy. Kept deliberately small:
-// first name + age band + chosen value + guide. No surnames, no PII beyond a
-// first name (PCI Values-Aligned Guardrails: collect no unnecessary data).
-export interface AIContext {
-  name: string;
-  ageBand: AgeBand;
-  valueId: string;
-  valueLabel: string;
-  guideId: string;
-  guideName: string;
-  competency: CaselCompetency;
 }
 
 export interface ChildProfile {
   name: string;
   ageBand: AgeBand;
   guideId: string;
-  valueId: string;
 }
 
-// The single persisted blob (localStorage). Versioned for safe migrations.
+// Persisted state (localStorage), versioned. Bumped to v2 for the canon model.
 export interface GleeaState {
-  version: 1;
+  version: 2;
   profile: ChildProfile | null;
-  garden: GardenElement[];
-  generations: AIGeneration[];
+  flower: FlowerPetal[];
+  reflections: Reflection[];
   customMissions: CustomMission[];
-  // Per-story completion flags for the loop.
   completed: Record<string, Partial<Record<LoopStep, boolean>>>;
 }

@@ -1,94 +1,81 @@
-import type { Guide } from './types';
+import type { Casel, Guide } from './types';
 
-// Animal Guides are the in-app characters. Each is mapped to one CASEL
-// social-emotional competency and one strand of the Kind Eyes / Kind Heart /
-// Kind Hands scaffold. (The fairy / fairy-godmother is brand backstory, not an
-// in-app character.)
+// The six Animal Guides (canonical). Guides are companions — the child is
+// always the hero. Names and species are canonical; the guide → CASEL and
+// guide → home-World mappings are INFERRED for the MVP and should be confirmed
+// with the content team (CASEL for a given mission always comes from the
+// mission's own `casel` field, not from the guide).
 export const GUIDES: Guide[] = [
   {
-    id: 'joyful-otter',
-    name: 'Joyful Otter',
-    species: 'otter',
-    emoji: '🦦',
-    competency: 'self-awareness',
-    kindSense: 'heart',
-    accent: '#FF7AA8',
-    blurb: 'Helps you notice the happy and the wobbly feelings inside.',
-    persona:
-      'Joyful Otter is warm, playful, and curious. Otter floats on its back, ' +
-      'claps for small wins, and gently names feelings out loud so the child ' +
-      'learns to notice their own (self-awareness).',
+    id: 'brave_bear',
+    name: 'Brave Bear',
+    species: 'bear',
+    emoji: '🐻',
+    competency: 'responsible_decision_making',
+    homeWorldId: 'helping_hills',
+    accent: '#C68A4E',
+    blurb: 'Helps you be brave and make good, kind choices.',
+    persona: 'Brave Bear is steady, warm, and encouraging.',
   },
   {
-    id: 'calm-tortoise',
-    name: 'Calm Tortoise',
-    species: 'tortoise',
-    emoji: '🐢',
-    competency: 'self-management',
-    kindSense: 'heart',
-    accent: '#7AD0C0',
-    blurb: 'Shows you how to take slow, steady breaths when feelings get big.',
-    persona:
-      'Calm Tortoise is slow, steady, and reassuring. Tortoise models taking ' +
-      'a deep "shell breath" to settle big feelings (self-management).',
+    id: 'loyal_dog',
+    name: 'Loyal Dog',
+    species: 'dog',
+    emoji: '🐶',
+    competency: 'relationship_skills',
+    homeWorldId: 'friendship_forest',
+    accent: '#E0A458',
+    blurb: 'Helps you be a good friend and stick together.',
+    persona: 'Loyal Dog is friendly, playful, and dependable.',
   },
   {
-    id: 'gentle-deer',
+    id: 'gentle_deer',
     name: 'Gentle Deer',
     species: 'deer',
     emoji: '🦌',
-    competency: 'social-awareness',
-    kindSense: 'eyes',
+    competency: 'social_awareness',
+    homeWorldId: 'friendship_forest',
     accent: '#C9A7FF',
-    blurb: 'Helps you see when someone else might be feeling left out.',
-    persona:
-      'Gentle Deer is soft-spoken and observant. Deer notices how others feel ' +
-      'and points it out kindly (social awareness / Kind Eyes).',
+    blurb: 'Helps you notice how other people feel.',
+    persona: 'Gentle Deer is soft-spoken and observant.',
   },
   {
-    id: 'brave-fox',
-    name: 'Brave Fox',
-    species: 'fox',
-    emoji: '🦊',
-    competency: 'relationship-skills',
-    kindSense: 'hands',
-    accent: '#FFB36B',
-    blurb: 'Helps you make friends and say sorry when things go bumpy.',
-    persona:
-      'Brave Fox is friendly and encouraging. Fox helps the child take the ' +
-      'first step toward a friend and repair little hurts (relationship skills).',
+    id: 'joyful_otter',
+    name: 'Joyful Otter',
+    species: 'otter',
+    emoji: '🦦',
+    competency: 'self_awareness',
+    homeWorldId: 'family_cove',
+    accent: '#7AD0C0',
+    blurb: 'Helps you notice the feelings inside you.',
+    persona: 'Joyful Otter is warm, playful, and curious.',
   },
   {
-    id: 'wise-owl',
-    name: 'Wise Owl',
-    species: 'owl',
-    emoji: '🦉',
-    competency: 'responsible-decision-making',
-    kindSense: 'hands',
+    id: 'sweet_skunk',
+    name: 'Sweet Skunk',
+    species: 'skunk',
+    emoji: '🦨',
+    competency: 'self_management',
+    homeWorldId: 'kindness_garden',
     accent: '#9DB8FF',
-    blurb: 'Helps you stop and choose the kind thing to do.',
-    persona:
-      'Wise Owl is thoughtful and calm. Owl asks "what would be kind here?" to ' +
-      'help the child pause and choose (responsible decision-making).',
+    blurb: 'Helps you take slow breaths when feelings get big.',
+    persona: 'Sweet Skunk is calm, gentle, and reassuring.',
+  },
+  {
+    id: 'sharing_squirrel',
+    name: 'Sharing Squirrel',
+    species: 'squirrel',
+    emoji: '🐿️',
+    competency: 'generosity',
+    homeWorldId: 'wonder_world',
+    accent: '#E8A87C',
+    blurb: 'Helps you share and give with a happy heart.',
+    persona: 'Sharing Squirrel is generous, bright, and eager.',
   },
 ];
 
-export const DEFAULT_GUIDE_ID = 'joyful-otter';
+export const DEFAULT_GUIDE_ID = 'joyful_otter';
 
 export function getGuide(id: string): Guide {
   return GUIDES.find((g) => g.id === id) ?? GUIDES[0];
 }
-
-export const COMPETENCY_LABEL: Record<Guide['competency'], string> = {
-  'self-awareness': 'Self-Awareness',
-  'self-management': 'Self-Management',
-  'social-awareness': 'Social Awareness',
-  'relationship-skills': 'Relationship Skills',
-  'responsible-decision-making': 'Responsible Decision-Making',
-};
-
-export const KIND_SENSE_LABEL: Record<Guide['kindSense'], string> = {
-  eyes: 'Kind Eyes',
-  heart: 'Kind Heart',
-  hands: 'Kind Hands',
-};

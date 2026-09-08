@@ -2,106 +2,119 @@
 
 import React, { useState } from 'react';
 import { Button, Card } from './ui';
-import { COMPETENCY_LABEL, getGuide } from '../lib/guides';
-import { getValue } from '../lib/values';
-import { buildContext, generateMission } from '../lib/api';
+import { getGuide } from '../lib/guides';
+import { CASEL_LABEL } from '../lib/worlds';
+import { AGE_BAND_LABEL, personalize } from '../lib/personalize';
 import { newId } from '../lib/storage';
 import type {
-  AIGeneration,
-  ChildFeedback,
+  Casel,
   ChildProfile,
   CustomMission,
+  FlowerPetal,
+  Reflection,
 } from '../lib/types';
 
-// PCI child-AI-safety governance, made visible to the parent. The four pillars
-// are surfaced here so the people most worried about "AI + kids" can see
-// exactly what the AI did and stay in control.
+// Parent dashboard — the child-AI-safety and control view, made visible so the
+// people most worried about "AI + kids" can see exactly what Gleea does. The
+// guardrails reflect the canonical content principle: AI is limited to NAME
+// personalization; all story content is human-authored and CASEL-aligned.
 export function ParentDashboard({
   profile,
-  generations,
+  flower,
+  reflections,
   customMissions,
-  onUpdateGeneration,
   onAddCustomMission,
-  onLogGeneration,
   onSetMissionStatus,
 }: {
   profile: ChildProfile;
-  generations: AIGeneration[];
+  flower: FlowerPetal[];
+  reflections: Reflection[];
   customMissions: CustomMission[];
-  onUpdateGeneration: (id: string, patch: Partial<AIGeneration>) => void;
   onAddCustomMission: (mission: CustomMission) => void;
-  onLogGeneration: (gen: AIGeneration) => void;
   onSetMissionStatus: (id: string, status: CustomMission['status']) => void;
 }) {
   const guide = getGuide(profile.guideId);
-  const value = getValue(profile.valueId);
-  const ctx = buildContext(profile);
+
+  const byCasel = flower.reduce<Record<string, number>>((acc, p) => {
+    acc[p.casel] = (acc[p.casel] ?? 0) + 1;
+    return acc;
+  }, {});
 
   return (
     <div className="mx-auto max-w-3xl px-5 py-8">
-      <h2 className="text-3xl font-extrabold text-white">Parent dashboard</h2>
-      <p className="mt-1 text-white/70">
-        How Gleea keeps {profile.name}’s AI experience safe — and how you stay in control.
+      <h2 className="text-3xl font-extrabold text-parchment">Parent dashboard</h2>
+      <p className="mt-1 text-parchment/70">
+        How Gleea keeps {profile.name}’s experience safe — and how you stay in control.
       </p>
 
       <div className="mt-6 space-y-5">
-        {/* Pillar 1 — Contextual Training */}
-        <Pillar
-          index={1}
-          title="Contextual Training"
-          summary="Every AI prompt includes your child's age band and profile so the output is age-appropriate."
-        >
-          <p className="text-sm text-white/70">
-            This is the exact context sent with each story request — nothing more:
+        {/* Kindness Flower / CASEL profile */}
+        <Card>
+          <h3 className="font-rounded text-xl font-bold">Kindness Flower</h3>
+          <p className="mt-1 text-sm text-parchment-ink/70">
+            {profile.name}’s growth across the CASEL competencies, from completed missions.
           </p>
-          <dl className="mt-3 grid grid-cols-2 gap-2 text-sm sm:grid-cols-3">
-            <Field label="First name" value={ctx.name} />
-            <Field label="Age band" value={`${ctx.ageBand} years`} />
-            <Field label="Kindness value" value={value.label} />
+          {flower.length === 0 ? (
+            <p className="mt-3 text-sm text-parchment-ink/60">No blooms yet — the first adventure grows the first petal.</p>
+          ) : (
+            <div className="mt-3 flex flex-wrap gap-2">
+              {Object.entries(byCasel).map(([casel, n]) => (
+                <span key={casel} className="rounded-full bg-gold/15 px-3 py-1 text-sm font-semibold text-gold-deep">
+                  {CASEL_LABEL[casel as Casel]} · {n}
+                </span>
+              ))}
+            </div>
+          )}
+        </Card>
+
+        {/* Pillar 1 — Age-appropriate context (minimal data) */}
+        <Pillar index={1} title="Age-appropriate by design"
+          summary="Content is scaffolded to your child's age band. The only profile data used is the minimum below — stored on this device.">
+          <dl className="grid grid-cols-2 gap-2 text-sm sm:grid-cols-3">
+            <Field label="First name" value={profile.name} />
+            <Field label="Age band" value={AGE_BAND_LABEL[profile.ageBand]} />
             <Field label="Animal Guide" value={guide.name} />
-            <Field label="CASEL focus" value={COMPETENCY_LABEL[guide.competency]} />
           </dl>
         </Pillar>
 
-        {/* Pillar 2 — Values-Aligned Guardrails */}
-        <Pillar
-          index={2}
-          title="Values-Aligned Guardrails"
-          summary="The child-facing AI is bounded to kindness / SEL content, refuses off-topic or unsafe prompts, and collects no unnecessary personal data."
-        >
-          <ul className="space-y-2 text-sm text-white/80">
-            <li>✓ System rules keep stories gentle, kind, and age-appropriate.</li>
-            <li>✓ Off-topic or unsafe requests are refused and steered back to kindness.</li>
-            <li>✓ Requests are size-limited and validated before reaching the model.</li>
-            <li>
-              ✓ Data stored on this device only: a first name, an age band, and a chosen
-              value. No surname, no birthdate, no contact info, no account.
-            </li>
+        {/* Pillar 2 — Guardrails */}
+        <Pillar index={2} title="Values-aligned guardrails"
+          summary="What the AI can and cannot do, and what we collect.">
+          <ul className="space-y-2 text-sm text-parchment-ink/80">
+            <li>✓ <b>AI is limited to name personalization only</b> — every READ/DO/SHINE story is human-authored and CASEL-aligned, never AI-generated.</li>
+            <li>✓ DO missions are always real-world, observable, dignity-centered actions (no purchases, no assumptions about home).</li>
+            <li>✓ No dark patterns: no leaderboards, no login rewards, no shops, no sibling competition, no open comments.</li>
+            <li>✓ Minimal data, on this device only: a first name, an age band, a chosen guide. No surname, birthdate, or contact info.</li>
           </ul>
         </Pillar>
 
-        {/* Pillar 3 — Workflow Embedding */}
-        <Pillar
-          index={3}
-          title="Workflow Embedding"
-          summary="The AI assists, it doesn't replace you. Custom missions you create need your approval before your child sees them."
-        >
+        {/* Pillar 3 — Workflow embedding: parent approval */}
+        <Pillar index={3} title="You’re in the loop"
+          summary="Gleea assists, it doesn't replace you. Custom missions you write need your approval before your child sees them.">
           <CustomMissionStudio
             profile={profile}
             customMissions={customMissions}
             onAddCustomMission={onAddCustomMission}
-            onLogGeneration={onLogGeneration}
             onSetMissionStatus={onSetMissionStatus}
           />
         </Pillar>
 
-        {/* Pillar 4 — Participatory Feedback */}
-        <Pillar
-          index={4}
-          title="Participatory Feedback"
-          summary="See everything the AI generated. Flag anything to review, add a note, and watch your child's simple feedback that tunes future stories."
-        >
-          <GenerationLog generations={generations} onUpdateGeneration={onUpdateGeneration} />
+        {/* Pillar 4 — Participatory feedback */}
+        <Pillar index={4} title="See how it’s landing"
+          summary="Your child's simple SHINE feedback, so you can adjust focus over time.">
+          {reflections.length === 0 ? (
+            <p className="text-sm text-parchment-ink/60">No reflections yet.</p>
+          ) : (
+            <ul className="space-y-2">
+              {reflections.map((r) => (
+                <li key={r.id} className="flex items-center gap-3 rounded-2xl border border-parchment-shade bg-parchment-shade/40 p-3 text-sm">
+                  <span className="text-2xl">{r.emoji ?? '—'}</span>
+                  <span className="flex-1">{CASEL_LABEL[r.casel]}</span>
+                  <span className="text-parchment-ink/50">{new Date(r.createdAt).toLocaleString()}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </Pillar>
       </div>
     </div>
@@ -122,89 +135,25 @@ function Pillar({
   return (
     <Card>
       <div className="flex items-start gap-3">
-        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gleea-pink font-rounded font-bold text-white">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold font-rounded font-bold text-twilight-900">
           {index}
         </span>
         <div className="min-w-0">
-          <h3 className="font-rounded text-xl font-bold text-white">{title}</h3>
-          <p className="mt-1 text-sm text-white/70">{summary}</p>
+          <h3 className="font-rounded text-xl font-bold">{title}</h3>
+          <p className="mt-1 text-sm text-parchment-ink/70">{summary}</p>
         </div>
       </div>
-      <div className="mt-4 border-t border-white/10 pt-4">{children}</div>
+      <div className="mt-4 border-t border-parchment-shade pt-4">{children}</div>
     </Card>
   );
 }
 
 function Field({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl bg-night-900/50 px-3 py-2">
-      <div className="text-xs uppercase tracking-wide text-white/40">{label}</div>
-      <div className="font-semibold text-white">{value}</div>
+    <div className="rounded-xl bg-parchment-shade/50 px-3 py-2">
+      <div className="text-xs uppercase tracking-wide text-parchment-ink/40">{label}</div>
+      <div className="font-semibold">{value}</div>
     </div>
-  );
-}
-
-const FEEDBACK_EMOJI: Record<ChildFeedback, string> = { love: '😍', ok: '🙂', meh: '😐' };
-
-function GenerationLog({
-  generations,
-  onUpdateGeneration,
-}: {
-  generations: AIGeneration[];
-  onUpdateGeneration: (id: string, patch: Partial<AIGeneration>) => void;
-}) {
-  if (generations.length === 0) {
-    return <p className="text-sm text-white/60">Nothing generated yet.</p>;
-  }
-  return (
-    <ul className="space-y-3">
-      {generations.map((g) => (
-        <li key={g.id} className="rounded-2xl border border-white/10 bg-night-900/40 p-4">
-          <div className="flex flex-wrap items-center gap-2 text-xs">
-            <span className="rounded-full bg-white/10 px-2 py-0.5 font-bold uppercase text-white/70">
-              {g.type}
-            </span>
-            <span
-              className={
-                'rounded-full px-2 py-0.5 font-bold ' +
-                (g.source === 'claude'
-                  ? 'bg-gleea-mint/20 text-gleea-mint'
-                  : 'bg-white/10 text-white/60')
-              }
-            >
-              {g.source === 'claude' ? 'Claude' : 'Offline fallback'}
-            </span>
-            <span className="text-white/40">{new Date(g.createdAt).toLocaleString()}</span>
-            {g.childFeedback && (
-              <span className="ml-auto text-lg" title={`Child feedback: ${g.childFeedback}`}>
-                {FEEDBACK_EMOJI[g.childFeedback]}
-              </span>
-            )}
-          </div>
-          <p className="mt-2 whitespace-pre-line text-sm text-white/90">{g.output}</p>
-          <div className="mt-3 flex flex-wrap items-center gap-2">
-            <button
-              onClick={() => onUpdateGeneration(g.id, { flagged: !g.flagged })}
-              className={
-                'rounded-full px-3 py-1 text-xs font-bold transition ' +
-                (g.flagged
-                  ? 'bg-gleea-pink text-white'
-                  : 'bg-white/10 text-white/70 hover:bg-white/20')
-              }
-            >
-              {g.flagged ? '🚩 Flagged' : 'Flag for review'}
-            </button>
-            <input
-              defaultValue={g.parentNote ?? ''}
-              placeholder="Add a note…"
-              onBlur={(e) => onUpdateGeneration(g.id, { parentNote: e.target.value })}
-              className="min-w-0 flex-1 rounded-full border border-white/10 bg-night-900/60 px-3 py-1
-                         text-xs text-white placeholder-white/30 focus:border-gleea-pink focus:outline-none"
-            />
-          </div>
-        </li>
-      ))}
-    </ul>
   );
 }
 
@@ -212,85 +161,62 @@ function CustomMissionStudio({
   profile,
   customMissions,
   onAddCustomMission,
-  onLogGeneration,
   onSetMissionStatus,
 }: {
   profile: ChildProfile;
   customMissions: CustomMission[];
   onAddCustomMission: (mission: CustomMission) => void;
-  onLogGeneration: (gen: AIGeneration) => void;
   onSetMissionStatus: (id: string, status: CustomMission['status']) => void;
 }) {
-  const ctx = buildContext(profile);
   const [idea, setIdea] = useState('');
-  const [busy, setBusy] = useState(false);
 
-  async function create() {
+  function create() {
     const trimmed = idea.trim();
-    if (!trimmed || busy) return;
-    setBusy(true);
-    const result = await generateMission(ctx, trimmed);
-    const now = new Date().toISOString();
-    onLogGeneration({
-      id: newId('gen'),
-      createdAt: now,
-      type: 'mission',
-      context: ctx,
-      output: result.text,
-      source: result.source,
-      flagged: false,
-    });
+    if (!trimmed) return;
     onAddCustomMission({
       id: newId('mission'),
-      createdAt: now,
-      text: result.text,
+      createdAt: new Date().toISOString(),
+      text: trimmed,
       status: 'pending',
-      context: ctx,
     });
     setIdea('');
-    setBusy(false);
   }
 
   return (
     <div>
-      <label className="mb-2 block text-sm text-white/70">
-        Draft a custom mission idea. The guide will phrase it for {profile.name}; you approve
-        before it appears.
+      <label className="mb-2 block text-sm text-parchment-ink/70">
+        Write a real-world kindness mission for {profile.name}. It appears only after you approve it.
+        You can use <code>{'{{CHILD_NAME}}'}</code> and <code>{'{{GUIDE_NAME}}'}</code> and they’ll be filled in.
       </label>
       <div className="flex flex-col gap-2 sm:flex-row">
         <input
           value={idea}
           maxLength={300}
           onChange={(e) => setIdea(e.target.value)}
-          placeholder="e.g. help set the dinner table for grandma"
-          className="min-w-0 flex-1 rounded-2xl border border-white/15 bg-night-900/60 px-4 py-3
-                     text-white placeholder-white/40 focus:border-gleea-pink focus:outline-none"
+          placeholder="e.g. Help set the dinner table for grandma"
+          className="min-w-0 flex-1 rounded-2xl border border-parchment-shade bg-white/70 px-4 py-3
+                     text-parchment-ink placeholder-parchment-ink/40 focus:border-gold focus:outline-none"
         />
-        <Button onClick={create} disabled={busy || !idea.trim()}>
-          {busy ? 'Thinking…' : 'Draft mission'}
-        </Button>
+        <Button onClick={create} disabled={!idea.trim()}>Add mission</Button>
       </div>
 
       {customMissions.length > 0 && (
         <ul className="mt-4 space-y-2">
           {customMissions.map((m) => (
-            <li
-              key={m.id}
-              className="rounded-2xl border border-white/10 bg-night-900/40 p-3 text-sm"
-            >
-              <p className="text-white/90">{m.text}</p>
+            <li key={m.id} className="rounded-2xl border border-parchment-shade bg-parchment-shade/40 p-3 text-sm">
+              <p>{personalize(m.text, profile)}</p>
               <div className="mt-2 flex items-center gap-2">
                 {m.status === 'pending' ? (
                   <>
                     <button
                       onClick={() => onSetMissionStatus(m.id, 'approved')}
-                      className="rounded-full bg-gleea-mint/20 px-3 py-1 text-xs font-bold text-gleea-mint"
+                      className="rounded-full bg-gold/25 px-3 py-1 text-xs font-bold text-gold-deep"
                     >
                       ✓ Approve
                     </button>
                     <button
                       onClick={() => onSetMissionStatus(m.id, 'declined')}
-                      className="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-white/70"
+                      className="rounded-full bg-parchment-shade px-3 py-1 text-xs font-bold text-parchment-ink/70"
                     >
                       Decline
                     </button>
@@ -300,8 +226,8 @@ function CustomMissionStudio({
                     className={
                       'rounded-full px-3 py-1 text-xs font-bold ' +
                       (m.status === 'approved'
-                        ? 'bg-gleea-mint/20 text-gleea-mint'
-                        : 'bg-white/10 text-white/50')
+                        ? 'bg-gold/25 text-gold-deep'
+                        : 'bg-parchment-shade text-parchment-ink/50')
                     }
                   >
                     {m.status === 'approved' ? '✓ Approved' : 'Declined'}

@@ -3,9 +3,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 // Simple narration player for the READ step. It plays ONE human-recorded
-// narration file that Delvina supplies for the demo story (drop it at the
-// `src` path, e.g. public/audio/demo-story.mp3). This is intentionally NOT a
-// text-to-speech system — TTS is deferred.
+// narration file supplied for the demo mission (drop it at the `src` path, e.g.
+// public/audio/demo-story.mp3). This is intentionally NOT text-to-speech — TTS
+// is deferred. Rendered on a parchment card.
 export function AudioPlayer({ src, label }: { src: string; label: string }) {
   const ref = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
@@ -44,36 +44,31 @@ export function AudioPlayer({ src, label }: { src: string; label: string }) {
   }
 
   return (
-    <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-3">
-      <audio
-        ref={ref}
-        src={src}
-        preload="none"
-        onError={() => setAvailable(false)}
-      />
+    <div className="flex items-center gap-4 rounded-2xl border border-parchment-shade bg-parchment-shade/50 p-3">
+      <audio ref={ref} src={src} preload="none" onError={() => setAvailable(false)} />
       <button
         type="button"
         onClick={toggle}
         aria-label={playing ? 'Pause narration' : 'Play narration'}
         disabled={!available}
-        className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-gleea-pink text-2xl
-                   text-white shadow-glow transition active:scale-95 disabled:opacity-50"
+        className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-gold text-2xl
+                   text-twilight-900 shadow-glow transition active:scale-95 disabled:opacity-50"
       >
         {playing ? '⏸️' : '▶️'}
       </button>
       <div className="min-w-0 flex-1">
-        <div className="font-rounded font-bold text-white">
+        <div className="font-rounded font-bold text-parchment-ink">
           {available ? label : 'Narration coming soon'}
         </div>
         {available ? (
-          <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-white/15">
+          <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-parchment-shade">
             <div
-              className="h-full rounded-full bg-gleea-rose transition-[width]"
+              className="h-full rounded-full bg-gold transition-[width]"
               style={{ width: `${progress}%` }}
             />
           </div>
         ) : (
-          <div className="text-sm text-white/60">You can still read the story below.</div>
+          <div className="text-sm text-parchment-ink/60">You can still read the story below.</div>
         )}
       </div>
     </div>

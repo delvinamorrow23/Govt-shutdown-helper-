@@ -3,10 +3,9 @@
 import React, { useMemo, useState } from 'react';
 import { Button, Card } from './ui';
 
-// A light "grown-ups only" gate in front of the parent dashboard. It's a small
-// friction step (a simple arithmetic question a 3-6 year old can't solve), not
-// real authentication — the MVP has no accounts. It doubles as a visible nod to
-// PCI Workflow Embedding: the parent area is kept separate from the child flow.
+// A light "grown-ups only" gate in front of the parent dashboard — a small
+// arithmetic step a 3–6 year old can't solve, not real authentication (the MVP
+// has no accounts). Keeps the parent area separate from the child flow.
 export function ParentGate({
   onPass,
   onCancel,
@@ -28,11 +27,11 @@ export function ParentGate({
     <div className="mx-auto flex min-h-[70vh] max-w-md flex-col items-center justify-center px-6">
       <Card className="w-full text-center">
         <div className="text-5xl">🔒</div>
-        <h2 className="mt-3 text-2xl font-extrabold text-white">Grown-ups only</h2>
-        <p className="mt-2 text-white/70">
+        <h2 className="mt-3 text-2xl font-extrabold">Grown-ups only</h2>
+        <p className="mt-2 text-parchment-ink/70">
           To open the parent dashboard, please solve this:
         </p>
-        <div className="mt-5 text-3xl font-extrabold text-gleea-rose">
+        <div className="mt-5 text-3xl font-extrabold text-gold-deep">
           {a} + {b} = ?
         </div>
         <input
@@ -42,14 +41,12 @@ export function ParentGate({
             setValue(e.target.value);
             setError(false);
           }}
-          className="mt-4 w-32 rounded-2xl border border-white/15 bg-night-900/60 px-4 py-3
-                     text-center text-2xl text-white focus:border-gleea-pink focus:outline-none"
+          className="mt-4 w-32 rounded-2xl border border-parchment-shade bg-white/70 px-4 py-3
+                     text-center text-2xl text-parchment-ink focus:border-gold focus:outline-none"
         />
-        {error && <p className="mt-2 text-sm text-gleea-pink">Not quite — try again.</p>}
+        {error && <p className="mt-2 text-sm text-gold-deep">Not quite — try again.</p>}
         <div className="mt-6 flex justify-center gap-3">
-          <Button variant="soft" onClick={onCancel}>
-            Back
-          </Button>
+          <Button variant="soft" onClick={onCancel}>Back</Button>
           <Button onClick={check}>Enter</Button>
         </div>
       </Card>

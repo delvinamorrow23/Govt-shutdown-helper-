@@ -4,9 +4,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button, Card } from './ui';
 
-// Brand entry point. The fairy / fairy-godmother appears here as ORIGIN STORY
-// only — she is the brand's backstory, not an in-app character. The in-app
-// characters are the Animal Guides, introduced on the next screen.
+// Brand entry point. Gleea's mark is a painted heart; the in-app characters are
+// the six Animal Guides. Gleea is a co-participation experience — grown-up and
+// child do it together (the grown-up reads aloud, the child does the mission).
 export function Welcome({ onStart }: { onStart: () => void }) {
   return (
     <div className="mx-auto flex min-h-[80vh] max-w-xl flex-col items-center justify-center px-6 text-center">
@@ -16,13 +16,13 @@ export function Welcome({ onStart }: { onStart: () => void }) {
         transition={{ type: 'spring', stiffness: 140, damping: 14 }}
         className="text-7xl"
       >
-        🧚✨
+        💛
       </motion.div>
       <motion.h1
         initial={{ y: 14, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.15 }}
-        className="mt-4 text-5xl font-extrabold text-white"
+        className="mt-4 text-5xl font-extrabold text-parchment"
       >
         Gleea
       </motion.h1>
@@ -30,7 +30,7 @@ export function Welcome({ onStart }: { onStart: () => void }) {
         initial={{ y: 14, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.25 }}
-        className="mt-3 text-lg text-gleea-rose"
+        className="mt-3 text-lg text-gold-soft"
       >
         Little stories that grow kind hearts.
       </motion.p>
@@ -42,17 +42,16 @@ export function Welcome({ onStart }: { onStart: () => void }) {
         className="mt-8 w-full"
       >
         <Card className="text-left">
-          <p className="text-base leading-relaxed text-white/90">
-            Long ago, a kindness fairy wished that every child could learn to be
-            gentle, brave, and caring. She couldn’t be everywhere at once — so she
-            sent her friends, the <span className="font-bold text-gleea-gold">Animal Guides</span>,
-            to walk beside each child.
+          <p className="text-base leading-relaxed">
+            Every adventure, a friendly <span className="font-bold">Animal Guide</span> walks
+            beside your child through three gentle steps —{' '}
+            <span className="font-bold text-gold-deep">Read</span> a story together,{' '}
+            <span className="font-bold text-gold-deep">Do</span> a real kindness in the world,
+            and <span className="font-bold text-gold-deep">Shine</span> by talking about how it felt.
           </p>
-          <p className="mt-3 text-base leading-relaxed text-white/90">
-            Together you’ll <span className="font-bold text-gleea-rose">Read</span> a
-            story, <span className="font-bold text-gleea-rose">Do</span> a kindness
-            mission, and <span className="font-bold text-gleea-rose">Shine</span> as a
-            family — and watch your kindness garden grow.
+          <p className="mt-3 text-base leading-relaxed">
+            Gleea is best done <span className="font-bold">together</span>: you read aloud, your
+            little one leads the kindness. Watch your Kindness Garden bloom along the way. 🌱
           </p>
         </Card>
       </motion.div>
@@ -63,7 +62,7 @@ export function Welcome({ onStart }: { onStart: () => void }) {
         transition={{ delay: 0.5 }}
         className="mt-8"
       >
-        <Button onClick={onStart}>Meet your guide ✨</Button>
+        <Button onClick={onStart}>Meet your guide 🐾</Button>
       </motion.div>
     </div>
   );

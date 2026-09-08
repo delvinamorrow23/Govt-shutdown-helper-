@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Starfield } from '../components/Starfield';
 import { Nav, type View } from '../components/Nav';
 import { Welcome } from '../components/Welcome';
 import { ProfileSetup } from '../components/ProfileSetup';
@@ -15,37 +14,27 @@ import {
   newId,
   setProfile as setProfileMut,
   markStep,
-  addGardenElement,
-  logGeneration,
-  updateGeneration,
+  addPetal,
+  addReflection,
   addCustomMission,
   setCustomMissionStatus,
 } from '../lib/storage';
-import { DEMO_STORY } from '../lib/story';
+import { DEMO_MISSION } from '../lib/mission';
+import { CASEL_FLOWER } from '../lib/worlds';
 import type {
-  AIGeneration,
+  ChildFeedback,
   ChildProfile,
   CustomMission,
-  GardenElement,
+  FlowerPetal,
   GleeaState,
+  Reflection,
 } from '../lib/types';
-
-const BLOOMS: { kind: GardenElement['kind']; emoji: string; label: string }[] = [
-  { kind: 'flower', emoji: '🌸', label: 'Cherry blossom' },
-  { kind: 'flower', emoji: '🌷', label: 'Tulip' },
-  { kind: 'star', emoji: '🌟', label: 'Kindness star' },
-  { kind: 'flower', emoji: '🌻', label: 'Sunflower' },
-  { kind: 'tree', emoji: '🌳', label: 'Kindness tree' },
-  { kind: 'flower', emoji: '🌼', label: 'Daisy' },
-  { kind: 'sprout', emoji: '🍀', label: 'Lucky clover' },
-];
 
 export default function Page() {
   const [hydrated, setHydrated] = useState(false);
   const [state, setState] = useState<GleeaState>(() => loadState());
   const [view, setView] = useState<View>('welcome');
   const [justGrew, setJustGrew] = useState(false);
-  // Bumps to force a fresh GleeaLoop (new story generation) on replay.
   const [loopKey, setLoopKey] = useState(0);
 
   // Hydrate from localStorage on the client only (avoids SSR mismatch).
@@ -56,7 +45,6 @@ export default function Page() {
     setHydrated(true);
   }, []);
 
-  // Persist on every change once hydrated.
   useEffect(() => {
     if (hydrated) saveState(state);
   }, [state, hydrated]);
@@ -67,12 +55,6 @@ export default function Page() {
     setView('loop');
   }
 
-  function handleLogGeneration(gen: AIGeneration) {
-    setState((s) => logGeneration(s, gen));
-  }
-  function handleUpdateGeneration(id: string, patch: Partial<AIGeneration>) {
-    setState((s) => updateGeneration(s, id, patch));
-  }
   function handleAddCustomMission(m: CustomMission) {
     setState((s) => addCustomMission(s, m));
   }
@@ -80,22 +62,29 @@ export default function Page() {
     setState((s) => setCustomMissionStatus(s, id, status));
   }
 
-  function handleShineComplete() {
-    const bloom = BLOOMS[state.garden.length % BLOOMS.length];
-    const element: GardenElement = {
-      id: newId('bloom'),
-      kind: bloom.kind,
-      emoji: bloom.emoji,
-      label: bloom.label,
+  function handleShineComplete(emoji: ChildFeedback | null) {
+    const casel = DEMO_MISSION.casel;
+    const petal: FlowerPetal = {
+      id: newId('petal'),
+      casel,
+      emoji: CASEL_FLOWER[casel],
       earnedAt: new Date().toISOString(),
-      storyId: DEMO_STORY.id,
-      valueId: state.profile?.valueId ?? DEMO_STORY.defaultValueId,
+      missionId: DEMO_MISSION.id,
+      worldId: DEMO_MISSION.worldId,
+    };
+    const reflection: Reflection = {
+      id: newId('reflection'),
+      missionId: DEMO_MISSION.id,
+      createdAt: new Date().toISOString(),
+      emoji,
+      casel,
     };
     setState((s) => {
-      let next = markStep(s, DEMO_STORY.id, 'read');
-      next = markStep(next, DEMO_STORY.id, 'do');
-      next = markStep(next, DEMO_STORY.id, 'shine');
-      return addGardenElement(next, element);
+      let next = markStep(s, DEMO_MISSION.id, 'read');
+      next = markStep(next, DEMO_MISSION.id, 'do');
+      next = markStep(next, DEMO_MISSION.id, 'shine');
+      next = addReflection(next, reflection);
+      return addPetal(next, petal);
     });
     setJustGrew(true);
     setView('garden');
@@ -110,7 +99,7 @@ export default function Page() {
   if (!hydrated) {
     return (
       <main className="grid min-h-screen place-items-center">
-        <div className="text-5xl animate-floaty">✨</div>
+        <div className="text-5xl animate-floaty">💛</div>
       </main>
     );
   }
@@ -120,30 +109,25 @@ export default function Page() {
 
   return (
     <main className="relative min-h-screen">
-      <Starfield />
       {showNav && <Nav current={view} onNavigate={setView} />}
 
       <div className="relative z-10">
         {view === 'welcome' && <Welcome onStart={() => setView('setup')} />}
 
-        {view === 'setup' && (
-          <ProfileSetup initial={state.profile} onDone={handleProfile} />
-        )}
+        {view === 'setup' && <ProfileSetup initial={state.profile} onDone={handleProfile} />}
 
         {view === 'loop' && state.profile && (
           <GleeaLoop
             key={loopKey}
             profile={state.profile}
             approvedMissions={approvedMissions}
-            onLogGeneration={handleLogGeneration}
-            onUpdateGeneration={handleUpdateGeneration}
             onShineComplete={handleShineComplete}
           />
         )}
 
         {view === 'garden' && (
           <Garden
-            elements={state.garden}
+            petals={state.flower}
             childName={state.profile?.name ?? 'friend'}
             justGrew={justGrew}
             onReplay={handleReplay}
@@ -157,11 +141,10 @@ export default function Page() {
         {view === 'parent' && state.profile && (
           <ParentDashboard
             profile={state.profile}
-            generations={state.generations}
+            flower={state.flower}
+            reflections={state.reflections}
             customMissions={state.customMissions}
-            onUpdateGeneration={handleUpdateGeneration}
             onAddCustomMission={handleAddCustomMission}
-            onLogGeneration={handleLogGeneration}
             onSetMissionStatus={handleSetMissionStatus}
           />
         )}

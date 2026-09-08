@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-// Small shared primitives in the Gleea storybook style. Kept lightweight and
-// in-house (rather than a full shadcn/ui install) to keep the demo dependency-
-// light; they can be swapped for shadcn later without changing call sites much.
+// Shared storybook primitives in the canonical Gleea style: parchment cards on
+// a twilight ground, gold accent. Lightweight and in-house (swappable for
+// shadcn later).
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'primary' | 'soft' | 'ghost';
@@ -19,12 +19,12 @@ export function Button({
   const base =
     'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-lg ' +
     'font-rounded font-bold transition active:scale-95 focus:outline-none ' +
-    'focus-visible:ring-4 focus-visible:ring-gleea-rose/60 disabled:opacity-50 ' +
+    'focus-visible:ring-4 focus-visible:ring-gold-soft/60 disabled:opacity-50 ' +
     'disabled:active:scale-100 min-h-[52px]';
   const variants: Record<string, string> = {
-    primary: 'bg-gleea-pink text-white shadow-glow hover:brightness-105',
-    soft: 'bg-white/10 text-white hover:bg-white/20 border border-white/15',
-    ghost: 'bg-transparent text-gleea-rose hover:bg-white/10',
+    primary: 'bg-gold text-twilight-900 shadow-glow hover:bg-gold-soft',
+    soft: 'bg-white/10 text-parchment hover:bg-white/20 border border-white/15',
+    ghost: 'bg-transparent text-gold-soft hover:bg-white/10',
   };
   return (
     <button className={`${base} ${variants[variant]} ${className}`} {...rest}>
@@ -33,6 +33,7 @@ export function Button({
   );
 }
 
+// Parchment card: warm paper with dark ink, for readable storybook content.
 export function Card({
   className = '',
   children,
@@ -43,8 +44,8 @@ export function Card({
   return (
     <div
       className={
-        'rounded-3xl border border-white/10 bg-white/[0.07] p-6 backdrop-blur-sm ' +
-        'shadow-[0_8px_40px_rgba(0,0,0,0.25)] ' +
+        'rounded-3xl border border-parchment-shade bg-parchment text-parchment-ink ' +
+        'p-6 shadow-card ' +
         className
       }
     >
@@ -72,8 +73,8 @@ export function Pill({
         'inline-flex items-center gap-2 rounded-2xl px-4 py-2 text-base font-semibold ' +
         'transition border min-h-[44px] ' +
         (active
-          ? 'bg-gleea-pink text-white border-gleea-pink shadow-glow'
-          : 'bg-white/5 text-white/90 border-white/15 hover:bg-white/10')
+          ? 'bg-gold text-twilight-900 border-gold shadow-glow'
+          : 'bg-parchment-shade/60 text-parchment-ink border-parchment-shade hover:bg-parchment-shade')
       }
     >
       {emoji ? <span className="text-xl">{emoji}</span> : null}
@@ -82,7 +83,7 @@ export function Pill({
   );
 }
 
-// Three-step loop progress indicator (READ · DO · SHINE).
+// Three-step loop progress indicator (READ · DO · SHINE). Rendered on twilight.
 export function StepDots({ current }: { current: 0 | 1 | 2 }) {
   const labels = ['Read', 'Do', 'Shine'];
   return (
@@ -93,13 +94,13 @@ export function StepDots({ current }: { current: 0 | 1 | 2 }) {
             <span
               className={
                 'h-3 w-3 rounded-full transition ' +
-                (i <= current ? 'bg-gleea-pink shadow-glow' : 'bg-white/25')
+                (i <= current ? 'bg-gold shadow-glow' : 'bg-white/25')
               }
             />
             <span
               className={
                 'text-xs font-rounded font-bold uppercase tracking-wide ' +
-                (i === current ? 'text-gleea-rose' : 'text-white/40')
+                (i === current ? 'text-gold-soft' : 'text-white/40')
               }
             >
               {label}
