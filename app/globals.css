@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Nunito', ui-sans-serif, system-ui, sans-serif;
+  /* Canonical twilight gradient — clean, no stars or sparkles in the background. */
+  background:
+    radial-gradient(1100px 620px at 50% -8%, #3a2d70 0%, rgba(58, 45, 112, 0) 62%),
+    linear-gradient(180deg, #241a4d 0%, #171233 100%);
+  background-attachment: fixed;
+  color: #f6efe0;
+}
+
+h1, h2, h3, .font-rounded {
+  font-family: 'Baloo 2', 'Nunito', ui-rounded, system-ui, sans-serif;
+}
+
+/* Large, friendly tap targets for little fingers. */
+button {
+  touch-action: manipulation;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
