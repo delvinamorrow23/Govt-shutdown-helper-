@@ -27,3 +27,8 @@ next-env.d.ts
 
 # claude code local (personal) settings
 .claude/settings.local.json
+
+# Base44 export: keep content, never commit per-child/personal data
+/data/base44-export/*
+!/data/base44-export/Mission.json
+!/data/base44-export/Badge.json
