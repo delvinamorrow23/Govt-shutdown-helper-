@@ -104,4 +104,9 @@ moment, and the parent safety dashboard.
 Worlds journey map, badges, community/Global Garden, educator & district
 features, and a text-to-speech pipeline.
 
+**What's next** — including how AI customization expands in staged, safety-gated
+phases — is in [`docs/roadmap.md`](docs/roadmap.md). Today the app is at **AI
+Phase 0** (name personalization only); richer AI personalization is planned
+behind explicit governance gates.
+
 > This is the Gleea SEL app. Not affiliated with any government service.
